@@ -5,9 +5,9 @@
 Welcome to the CMI-DAIR Template Python Repository! This template is designed to streamline your project setup and ensure a consistent structure. To get started, follow these steps:
 
 
-- [ ] Run `setup_template.py` to initialize the repository.
+- [x] Run `setup_template.py` to initialize the repository.
 - [ ] Replace the content of this `README.md` with details specific to your project.
-- [ ] Install the `pre-commit` hooks to ensure code quality on each commit.
+- [x] Install the `pre-commit` hooks to ensure code quality on each commit.
 - [ ] Revise SECURITY.md to reflect supported versions or remove it if not applicable.
 - [ ] Remove the placeholder src and test files, these are there merely to show how the CI works.
 - [ ] If it hasn't already been done for your organization/acccount, grant third-party app permissions for CodeCov.
@@ -16,12 +16,12 @@ Welcome to the CMI-DAIR Template Python Repository! This template is designed to
 
 # Project name
 
-[![Build](https://github.com/childmindresearch/template-python-repository/actions/workflows/test.yaml/badge.svg?branch=main)](https://github.com/childmindresearch/template-python-repository/actions/workflows/test.yaml?query=branch%3Amain)
-[![codecov](https://codecov.io/gh/childmindresearch/template-python-repository/branch/main/graph/badge.svg?token=22HWWFWPW5)](https://codecov.io/gh/childmindresearch/template-python-repository)
+[![Build](https://github.com/childmindresearch/EEG_quality_assessment/actions/workflows/test.yaml/badge.svg?branch=main)](https://github.com/childmindresearch/EEG_quality_assessment/actions/workflows/test.yaml?query=branch%3Amain)
+[![codecov](https://codecov.io/gh/childmindresearch/EEG_quality_assessment/branch/main/graph/badge.svg?token=22HWWFWPW5)](https://codecov.io/gh/childmindresearch/EEG_quality_assessment)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
-![stability-stable](https://img.shields.io/badge/stability-stable-green.svg)
-[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/childmindresearch/template-python-repository/blob/main/LICENSE)
-[![pages](https://img.shields.io/badge/api-docs-blue)](https://childmindresearch.github.io/template-python-repository)
+![stability-stable](https://img.shields.io/badge/stability-unstable-red.svg)
+[![LGPL--3.0 License](https://img.shields.io/badge/license-LGPL--3.0-blue.svg)](https://github.com/childmindresearch/EEG_quality_assessment/blob/main/LICENSE)
+[![pages](https://img.shields.io/badge/api-docs-blue)](https://childmindresearch.github.io/EEG_quality_assessment)
 
 What problem does this tool solve?
 
@@ -36,13 +36,13 @@ What problem does this tool solve?
 Install this package via :
 
 ```sh
-pip install APP_NAME
+pip install EEG_quality_assessment
 ```
 
 Or get the newest development version via:
 
 ```sh
-pip install git+https://github.com/childmindresearch/template-python-repository
+pip install git+https://github.com/childmindresearch/EEG_quality_assessment
 ```
 
 ## Quick start
@@ -50,9 +50,9 @@ pip install git+https://github.com/childmindresearch/template-python-repository
 Short tutorial, maybe with a
 
 ```Python
-import APP_NAME
+import EEG_quality_assessment
 
-APP_NAME.short_example()
+EEG_quality_assessment.short_example()
 ```
 
 ## Links or References
