@@ -25,7 +25,7 @@
 """MODULE DESCRIPTION HERE."""
 # standard library imports
 import copy
-from typing import Any, Callable, TypeVar
+from typing import Any, Callable
 
 # third-party imports (and comments indicating how to install them)
 # python -m conda install -c conda-forge mne or python -m pip install mne
