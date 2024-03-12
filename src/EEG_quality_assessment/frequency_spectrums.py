@@ -241,7 +241,7 @@ class FourierSpectrum:
         self.spectrum = self.spectrum - baseline
         return self
 
-    def calculate_amplitude(self) -> 'AmplitudeSpectrum':
+    def calculate_amplitude(self) -> 'FourierSpectrum':
         """Create an AmplitudeSpectrum object from a FourierSpectrum object.
 
         Args:
@@ -251,9 +251,8 @@ class FourierSpectrum:
         Returns:
             AmplitudeSpectrum: The AmplitudeSpectrum object.
         """
-        amplitude_spectrum = AmplitudeSpectrum()
-        amplitude_spectrum.spectrum = np.abs(self.spectrum)
-        return amplitude_spectrum
+        self.spectrum = np.abs(self.spectrum)
+        return self
 
     def calculate_zscore(self, frequency_of_interest: float = 12) -> 'FourierSpectrum':
         """Calculate the zscore of the spectrum.
