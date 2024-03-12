@@ -8,7 +8,7 @@ readme = "README.md"
 packages = [{include = "EEG_quality_assessment", from = "src"}]
 
 [tool.poetry.dependencies]
-python = "~3.11"
+python = ">3.11"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.0.2"

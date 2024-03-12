@@ -22,7 +22,52 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # ===============================================================================
-"""MODULE DESCRIPTION HERE."""
+"""This module handle frequency spectrum obtained from an FFT.
+
+The different calculations perfomed on the spectrum
+follow a methodology used in Fast Periodic Visual Stimulation (FPVS) to
+quantify with a high Signal Noise Ratio some cognitive processes at a specific
+frequency (e.g. the frequency of an Oddball). It is inspired from the Rossion
+et al. 2014 and Jonas et al. 2016.
+
+Note:
+    The articles mentionned perform a Steady State Evoked Related Potential
+    (SSVEP) paradigm which is called Fast Periodic Visual Stimulation
+    (Rossion et al. 2014). The paradigm involves a visual stimulation (images)
+    at a base frequency (6 Hz). Every 5 images, an oddball is pressented
+    (A face among non face images, or a known face among uknown faces etc.). The
+    odball frequency is 6/5 = 1.2 Hz. In order to quantify the
+    electrophysiological response of the cognitive process exhibited by the
+    oddball, the authors perform a frequency tagging analysis of the signal.
+    They calculate the fast fourier transform (FFT) of the signal and then
+    perform different operations and claculations on the spectrum.
+    The different operations are the correction of the baseline, the zscore
+    (to quantify the significance of the amplitude of the frequency of interest
+    from the "noise"), and the signal to noise ratio. To do so, they consider a
+    specific zone of 50 surrounding bins around the frequency of interest
+    (25 bins before and 25 bins after the frequency of interest).
+    They leave out one bin before and one bin after the frequency
+    of interest that lead to 24 bins each side of the frequency of interest.
+    This zone is consider as the "surrounding noise" of the brain activity and
+    the amplitude of the frequency of interest is considered as the "signal".
+    Therefore, the zscore is calculated as the amplitude of the signal divided
+    by the standard deviation of the surrounding noise. The signal to noise
+    ratio is calculated as the amplitude of the signal divided by the mean
+    amplitude of the surrounding noise.
+    Their methdology was implemented for a signal sampled at 512 Hz. Therefore
+    1 bin = 0.0135 Hz. In this module the approach used is in frequency step
+    rather than frequency bin, in order to have the same frequency
+    values as in the articles still offering flexibility in term of input
+    sampling frequency and frequency resolution.
+
+    This whole approach is interesting to quantify also noise that are at a
+    known frequency (e.g. 60 Hz noise from the electrical grid, gradient
+    artifacts for EEG-fMRI).
+
+    .. _Rossion et al. 2014: https://pubmed.ncbi.nlm.nih.gov/24728131/
+    .. _Jonas et al. 2016: https://pubmed.ncbi.nlm.nih.gov/27354526/
+
+"""
 # standard library imports
 import copy
 from typing import Any, Callable
@@ -38,24 +83,27 @@ import numpy as np
 class FourierSpectrum:
     """A class to store and manipulate the Fourier Spectrum of a signal."""
 
-    def __init__(self, raw: mne.io.Raw) -> None:
+    def __init__(self) -> None:
+        """Initialize."""
+        self.process_history: list = list()
+
+    def calculate_fft(self, raw: mne.io.Raw) -> 'FourierSpectrum':
         """Initialize the FourierSpectrum object.
 
         Args:
-            raw (mne.io.Raw): the raw signal to be analyzed
-                              has to be an mne.io.Raw object
+            raw (mne.io.Raw): The raw signal to be analyzed
         """
-        self.signal = raw.get_data()
         self.sampling_rate = raw.info["sfreq"]
+        self.signal = raw.get_data()
         self._adjust_signal_length()
-        self.fft = np.fft.fft(self.signal)
-        self.spectrum = np.abs(self.fft)
-        self.frequencies = np.fft.fftfreq(len(self.signal), 1 / self.sampling_rate)
+        self.spectrum = np.fft.fft(self.signal)
+        spectrum_length = np.shape(self.signal)[1]
+        self.frequencies = np.fft.fftfreq(spectrum_length,
+                                          1 / self.sampling_rate)
         self.frequencies = self.frequencies[: len(self.frequencies) // 2]
-        self.spectrum = self.spectrum[: len(self.spectrum) // 2]
-        self.spectrum_type = "raw amplitude"
+        self.spectrum = self.spectrum[:,:spectrum_length// 2]
         self.frequency_resolution = self.frequencies[1] - self.frequencies[0]
-        del self.signal  # to save memory because dealing with high sampling rate
+        return self
 
     def _adjust_signal_length(self) -> 'FourierSpectrum':
         """Adjust the signal length to be a power of 2.
@@ -74,9 +122,13 @@ class FourierSpectrum:
             new_length = 2 ** int(np.log2(current_length))
             np.resize(self.signal, self.signal[:, :new_length].shape)
 
+        self.process_history.append("Signal length adjusted to be a power of 2")
+
         return self
 
-    def set_frequency_of_interest(self, frequency_of_interest: float) -> 'FourierSpectrum':
+    def _set_frequency_of_interest(self,
+                                  frequency_of_interest: float = 12
+                                  ) -> 'FourierSpectrum':
         """Set the frequency of interest.
 
         This is following the methodology of Rossion et al. 2014 and Jonas et al. 2016
@@ -89,33 +141,20 @@ class FourierSpectrum:
             typing.Self: The FourierSpectrum object
         """
         self.frequency_of_interest = frequency_of_interest
+        self.process_history.append(
+            f"Frequency of interest set to {frequency_of_interest}"
+            )
         return self
 
-    def check_if_frequency_of_interest_exists(func: Any) -> Callable[..., Any]:
-        """Check if the frequency of interest has been set before using the method.
+    def _frequency_of_interest_exists(self) -> bool:
+        """Check if the frequency of interest has been set.
 
-        Args:
-            func (Any): the method to be checked
+        Returns:
+            bool: True if the frequency of interest has been set, False otherwise.
         """
+        return hasattr(self, "frequency_of_interest")
 
-        def wrapper(self: 'FourierSpectrum',
-                    *args: tuple,
-                    **kwargs: dict) -> 'FourierSpectrum':
-
-            if hasattr(self, "frequency_of_interest"):
-                return func(self, *args, **kwargs)
-
-            else:
-                raise ValueError(
-                    """
-                The frequency of interest has to be set before using this method.
-                Use the set_frequency_of_interest() method to set it.
-                """
-                )
-
-        return wrapper
-
-    def _get_frequency_index(self, frequency_of_interest: float) -> int:
+    def _get_frequency_index(self) -> int:
         """Get the index of the frequency of interest in the spectrum.
 
         Args:
@@ -124,7 +163,7 @@ class FourierSpectrum:
         Returns:
             int: The index (position) in the spectrum
         """
-        return np.argmin(np.abs(self.frequencies - frequency_of_interest))
+        return np.argmin(np.abs(self.frequencies - self.frequency_of_interest))
 
     def _get_amplitude_surounding_bins(
         self,
@@ -132,18 +171,6 @@ class FourierSpectrum:
         nb_steps: int = 25,
     ) -> np.ndarray:
         """Get the amplitude of the surrounding bins of the frequency of interest.
-
-        This is inspired from the Rossion et al. 2014
-        and Jonas et al. 2016 papers who are pioneer in face recognition
-        Frequency Tagging of Steady State Visual Evoked Potential -> SSVEP
-        (more precisely Fast Periodic Visual Stimulation -> FPVS).
-        They perform calculation based on the 50 surrounding bins of the frequency
-        of interest (25 bins before and the 25 bins after the frequency of interest).
-        They leave out one bin before and one bin after the frequency of interest.
-        Their bins are for a fourier spectrum from a signal sampled at 512 Hz therefore
-        1 bin is 0.0135 Hz. In order to reproduce the same calculation as in the articles
-        it is thought in terms of frequency steps instead of bins due to the possiblity
-        of having different sampling rates and frequency resolutions.
 
         Args:
             frequency_of_interest (float): The frequency around
@@ -155,52 +182,42 @@ class FourierSpectrum:
         Returns:
             np.ndarray: _description_
         """
-        frequency_index = self._get_frequency_index(self.frequency_of_interest)
+        frequency_index = self._get_frequency_index()
 
         nb_bins = int(desired_frequency_step / self.frequency_resolution)
-        amplitude_surrounding_left_bins = self.spectrum[
+        amplitude_surrounding_left_bins = self.spectrum[:,
             frequency_index - nb_steps * nb_bins : frequency_index - nb_bins
         ]
 
-        amplitude_surrounding_right_bins = self.spectrum[
+        amplitude_surrounding_right_bins = self.spectrum[:,
             frequency_index + nb_bins : frequency_index + nb_steps * nb_bins
         ]
 
-        return np.concatenate(
-            (amplitude_surrounding_left_bins, amplitude_surrounding_right_bins)
+        self.process_history.append(
+            f"""Amplitude of the {(nb_steps-1)*2} surrounding bins of the
+            frequency of interest calculated with a frequency step of
+            {desired_frequency_step} Hz"""
         )
 
-    @check_if_frequency_of_interest_exists
+        return np.concatenate(
+            (amplitude_surrounding_left_bins, amplitude_surrounding_right_bins),
+            axis=1
+        )
+
     def _get_baseline(self) -> float:
         """Get the baseline of the spectrum around the frequency of interest.
 
-        This baseline calculation is inspired from the Rossion et al. 2014
-        and Jonas et al. 2016 papers who are pioneer in face recognition
-        Frequency Tagging of Steady State Visual Evoked Potential -> SSVEP
-        (more precisely Fast Periodic Visual Stimulation -> FPVS).
-        The baseline is considered as the mean amplitude of then n surrounding
-        bins of the frequency of interest.
-        In the articles they consider the 50 surrounding bins (25 bins before
-        and the 25 bins after the frequency of interest).They leave out one
-        bin before and one bin after the frequency of interest. Then, they compute
-        the mean of the 48 remaining bins (24 on the left and 24 on the right
-        of the frequency of interest). The sampling rate used in their articles
-        is 512 Hz so 1 bin is 0.0135 Hz.
+        The baseline is the mean amplitude of the surrounding bins of the
+        frequency of interest.
 
         Returns:
             float : The baseline value
 
-        .. _Rossion et al. 2014: https://pubmed.ncbi.nlm.nih.gov/24728131/
-        .. _Jonas et al. 2016: https://pubmed.ncbi.nlm.nih.gov/27354526/
-
         """
-        amplitude_surrounding_bins = self._get_amplitude_surounding_bins(
-            self.frequency_of_interest
-        )
+        amplitude_surrounding_bins = self._get_amplitude_surounding_bins()
         return np.mean(amplitude_surrounding_bins)
 
-    @check_if_frequency_of_interest_exists
-    def correct_baseline(self) -> 'FourierSpectrum':
+    def _correct_baseline(self) -> 'FourierSpectrum':
         """Remove the baseline of the spectrum.
 
         It removes the baseline on the entire spectrum. What is considered
@@ -212,64 +229,92 @@ class FourierSpectrum:
 
         Args:
             frequency_of_interest (float, optional): The frequency around which
-                                                     the baseline, snr and zscore
-                                                     will be calculated. Defaults to 12.
+                                                     the baseline, snr and
+                                                     zscore will be calculated.
+                                                     Defaults to 12.
 
         Returns:
             self : The modified FourierSpectrum object.
         """
-        baseline = self._get_baseline(self.frequency_of_interest)
-        self.spectrum_type = "baseline corrected amplitude"
+        baseline = self._get_baseline()
+        self.process_history.append("Baseline corrected")
         self.spectrum = self.spectrum - baseline
         return self
 
-    @check_if_frequency_of_interest_exists
-    def calculate_zscore(self) -> 'FourierSpectrum':
-        """Calculate the zscore of the spectrum.
+    def calculate_amplitude(self) -> 'AmplitudeSpectrum':
+        """Create an AmplitudeSpectrum object from a FourierSpectrum object.
 
-        It follows the methodology of Rossion et al. 2014 and Jonas et al. 2016.
-        The zscore is calculated as the amplitude of the frequency of interest divided
-        by the standard deviation of the amplitude of the surrounding bins.
+        Args:
+            spectrum (FourierSpectrum): The FourierSpectrum object
+                                        to be converted.
 
         Returns:
-            Self: The modified FourierSpectrum object.
+            AmplitudeSpectrum: The AmplitudeSpectrum object.
         """
-        if self.spectrum_type != "baseline corrected amplitude":
-            self.correct_baseline(self.frequency_of_interest)
+        amplitude_spectrum = AmplitudeSpectrum()
+        amplitude_spectrum.spectrum = np.abs(self.spectrum)
+        return amplitude_spectrum
 
-        amplitude_surrounding_bins = self._get_amplitude_surounding_bins(
-            self.frequency_of_interest
+    def calculate_zscore(self, frequency_of_interest: float = 12) -> 'FourierSpectrum':
+        """Calculate the zscore of the spectrum.
+
+        The zscore is calculated as the amplitude of the frequency of interest
+        divided by the standard deviation of the amplitude of the surrounding
+        bins.
+
+        Args:
+            spectrum (FourierSpectrum): The FourierSpectrum object to be
+                                        converted.
+            frequency_of_interest (int, optional): The frequency around
+                                                   which the standard
+                                                   deviation is calculated.
+                                                   Defaults to 12.
+
+        Raises:
+            TypeError: The input has to be an AmplitudeSpectrum to calculate
+                       the zscore.
+
+        Returns:
+            ZscoreSpectrum: The ZscoreSpectrum object.
+        """
+        self.frequency_of_interest = frequency_of_interest
+        amplitude_surrounding_bins = self._get_amplitude_surounding_bins()
+
+        surrounding_bin_std = np.std(amplitude_surrounding_bins)
+        self.spectrum = np.divide(
+            self.spectrum,
+            surrounding_bin_std
         )
-        std = np.std(amplitude_surrounding_bins)
-        self.spectrum_type = "zscore"
-        self.spectrum = self.spectrum / std
 
         return self
 
-    @check_if_frequency_of_interest_exists
-    def calculate_snr(self) -> 'FourierSpectrum':
+    def calculate_snr(self) -> 'FourierSpectrum ':
         """Calculate the signal to noise ratio of the spectrum.
 
-        Following the methodology of Rossion et al. 2014 and Jonas et al. 2016.
-        The signal to noise ratio is calculated as the baseline corrected amplitude
-        of the frequency of interest divided by the baseline amplitude.
+        The signal to noise ratio is calculated as the baseline corrected
+        amplitude of the frequency of interest divided by the baseline
+        amplitude.
+
+        Args:
+            spectrum (FourierSpectrum): The FourierSpectrum object to be
+                                        converted.
+            frequency_of_interest (int, optional): The frequency around
+                                                   which the baseline and
+                                                   snr will be calculated.
+                                                   Defaults to 12.
+
+        Raises:
+            TypeError: The input has to be an AmplitudeSpectrum to calculate
+                       the snr.
 
         Returns:
-            Self: The modified FourierSpectrum object.
+            SnrSpectrum: The SnrSpectrum object.
         """
-        if self.spectrum_type == "amplitude":
-            baseline = self._get_baseline(self.frequency_of_interest)
-            self.spectrum_type = "snr"
-            self.spectrum = self.spectrum / baseline
-        else:
-            raise TypeError(
-                f"""
-            The spectrum has to be an amplitude spectrum to calculate the snr.
-            Got a {self.spectrum_type} spectrum instead. Please re instantiate
-            the FourierSpectrum object with the raw signal.
-            """
-            )
-
+        baseline = self._get_baseline()
+        self.spectrum = np.divide(
+            self.spectrum,
+            baseline
+        )
         return self
 
     def calculate_phase(self) -> 'FourierSpectrum':
@@ -278,8 +323,7 @@ class FourierSpectrum:
         Returns:
             Self: The modified FourierSpectrum object.
         """
-        self.spectrum_type = "phase"
-        self.phase = np.angle(self.fft)
+        self.phase = np.angle(self.spectrum)
         return self
 
     def copy(self) -> 'FourierSpectrum':
@@ -290,7 +334,18 @@ class FourierSpectrum:
         """
         return copy.copy(self)
 
+class AmplitudeSpectrum(FourierSpectrum):
+    """A class to store and manipulate the Amplitude Spectrum of a signal.
 
-# TODO
-# - Think about making a subclass for the different
-#   spectrum types (amplitude, zscore, snr, phase)
+    It is the asbolute value of the Fourier Spectrum.
+    """
+
+class ZscoreSpectrum(FourierSpectrum):
+    """A class to store and manipulate the Zscore Spectrum of a signal.
+
+    It is calculated from the Amplitude Spectrum following the methodology of
+    Rossion et al. 2014 and Jonas et al. 2016.
+    """
+
+class SnrSpectrum(FourierSpectrum):
+    """A class to store and manipulate the SNR of the spectrum."""
