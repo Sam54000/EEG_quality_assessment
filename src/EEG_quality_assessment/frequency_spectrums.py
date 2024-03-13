@@ -372,3 +372,28 @@ class Spectrum:
                                          frequency_index + margin_index])
         else:
             return self.spectrum[0,self._get_frequency_index(frequency)]
+
+    def get_peak_magnitude_within_window(self, window: tuple = (17,20)) -> dict:
+        """Get the peak magnitude and frequency within a specific window.
+
+        Args:
+            window (tuple, optional): The window around the frequency of
+                                      interest. Defaults to (17,20).
+
+        Returns:
+            dict: A dictionary containing the window, the peak magnitude and
+                  the peak frequency.
+        """
+        index_window = (self._get_frequency_index(window[0]),
+                        self._get_frequency_index(window[1]))
+        magnitude_window = self.spectrum[:,index_window[0]:index_window[1]]
+        peak_magnitude = np.max(magnitude_window, axis=1)
+        peak_frequency_Hz = self.frequencies[
+            np.argmax(magnitude_window, axis=1)
+        ]
+
+        return {
+            "window_Hz": window,
+            "peak_magnitude": peak_magnitude,
+            "peak_frequency_Hz": peak_frequency_Hz
+        }
