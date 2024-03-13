@@ -1,5 +1,4 @@
 #!/usr/bin/env -S  python  #
-# -*- coding: utf-8 -*-
 # ===============================================================================
 # Author: Dr. Samuel Louviot, PhD
 # Institution: Nathan Kline Institute
@@ -80,15 +79,15 @@ import mne
 import numpy as np
 
 
-class FourierSpectrum:
+class Spectrum:
     """A class to store and manipulate the Fourier Spectrum of a signal."""
 
     def __init__(self) -> None:
         """Initialize."""
         self.process_history: list = list()
 
-    def calculate_fft(self, raw: mne.io.Raw) -> 'FourierSpectrum':
-        """Initialize the FourierSpectrum object.
+    def calculate_fft(self, raw: mne.io.Raw) -> 'Spectrum':
+        """Initialize the Spectrum object.
 
         Args:
             raw (mne.io.Raw): The raw signal to be analyzed
@@ -105,7 +104,7 @@ class FourierSpectrum:
         self.frequency_resolution = self.frequencies[1] - self.frequencies[0]
         return self
 
-    def _adjust_signal_length(self) -> 'FourierSpectrum':
+    def _adjust_signal_length(self) -> 'Spectrum':
         """Adjust the signal length to be a power of 2.
 
         This is done in order to have a faster computation of the fft.
@@ -114,7 +113,7 @@ class FourierSpectrum:
         signal (numpy.ndarray): A 2D numpy array (channels, time).
 
         Returns:
-        Self: the FourierSpectrum object
+        Self: the Spectrum object
         """
         current_length = self.signal.shape[1]
 
@@ -128,7 +127,7 @@ class FourierSpectrum:
 
     def _set_frequency_of_interest(self,
                                   frequency_of_interest: float = 12
-                                  ) -> 'FourierSpectrum':
+                                  ) -> 'Spectrum':
         """Set the frequency of interest.
 
         This is following the methodology of Rossion et al. 2014 and Jonas et al. 2016
@@ -138,7 +137,7 @@ class FourierSpectrum:
             frequency_of_interest (float): The frequency of interest.
 
         Returns:
-            typing.Self: The FourierSpectrum object
+            typing.Self: The Spectrum object
         """
         self.frequency_of_interest = frequency_of_interest
         self.process_history.append(
@@ -154,16 +153,16 @@ class FourierSpectrum:
         """
         return hasattr(self, "frequency_of_interest")
 
-    def _get_frequency_index(self) -> int:
+    def _get_frequency_index(self, frequency: float) -> int:
         """Get the index of the frequency of interest in the spectrum.
 
         Args:
-            frequency_of_interest (float): in Hertz
+            frequency (float): in Hertz
 
         Returns:
             int: The index (position) in the spectrum
         """
-        return np.argmin(np.abs(self.frequencies - self.frequency_of_interest))
+        return np.argmin(np.abs(self.frequencies - frequency))
 
     def _get_amplitude_surounding_bins(
         self,
@@ -182,7 +181,7 @@ class FourierSpectrum:
         Returns:
             np.ndarray: _description_
         """
-        frequency_index = self._get_frequency_index()
+        frequency_index = self._get_frequency_index(self.frequency_of_interest)
 
         nb_bins = int(desired_frequency_step / self.frequency_resolution)
         amplitude_surrounding_left_bins = self.spectrum[:,
@@ -214,10 +213,12 @@ class FourierSpectrum:
             float : The baseline value
 
         """
+        if not self._frequency_of_interest_exists():
+            raise ValueError("The frequency of interest has to be set first.")
         amplitude_surrounding_bins = self._get_amplitude_surounding_bins()
         return np.mean(amplitude_surrounding_bins)
 
-    def _correct_baseline(self) -> 'FourierSpectrum':
+    def correct_baseline(self) -> 'Spectrum':
         """Remove the baseline of the spectrum.
 
         It removes the baseline on the entire spectrum. What is considered
@@ -234,18 +235,26 @@ class FourierSpectrum:
                                                      Defaults to 12.
 
         Returns:
-            self : The modified FourierSpectrum object.
+            self : The modified Spectrum object.
         """
         baseline = self._get_baseline()
         self.process_history.append("Baseline corrected")
         self.spectrum = self.spectrum - baseline
         return self
 
-    def calculate_amplitude(self) -> 'FourierSpectrum':
-        """Create an AmplitudeSpectrum object from a FourierSpectrum object.
+    def _baseline_corrected(self) -> bool:
+        """Check if the baseline has been corrected.
+
+        Returns:
+            bool: True if the baseline has been corrected, False otherwise.
+        """
+        return 'basline corrected' in self.process_history
+
+    def calculate_amplitude(self) -> 'Spectrum':
+        """Create an AmplitudeSpectrum object from a Spectrum object.
 
         Args:
-            spectrum (FourierSpectrum): The FourierSpectrum object
+            spectrum (Spectrum): The Spectrum object
                                         to be converted.
 
         Returns:
@@ -254,7 +263,7 @@ class FourierSpectrum:
         self.spectrum = np.abs(self.spectrum)
         return self
 
-    def calculate_zscore(self, frequency_of_interest: float = 12) -> 'FourierSpectrum':
+    def calculate_zscore(self) -> 'Spectrum':
         """Calculate the zscore of the spectrum.
 
         The zscore is calculated as the amplitude of the frequency of interest
@@ -262,7 +271,7 @@ class FourierSpectrum:
         bins.
 
         Args:
-            spectrum (FourierSpectrum): The FourierSpectrum object to be
+            spectrum (Spectrum): The Spectrum object to be
                                         converted.
             frequency_of_interest (int, optional): The frequency around
                                                    which the standard
@@ -276,7 +285,12 @@ class FourierSpectrum:
         Returns:
             ZscoreSpectrum: The ZscoreSpectrum object.
         """
-        self.frequency_of_interest = frequency_of_interest
+        if not self._frequency_of_interest_exists():
+            raise ValueError("The frequency of interest has to be set first.")
+
+        if not self._baseline_corrected():
+            self.correct_baseline()
+
         amplitude_surrounding_bins = self._get_amplitude_surounding_bins()
 
         surrounding_bin_std = np.std(amplitude_surrounding_bins)
@@ -287,7 +301,7 @@ class FourierSpectrum:
 
         return self
 
-    def calculate_snr(self) -> 'FourierSpectrum ':
+    def calculate_snr(self) -> 'Spectrum ':
         """Calculate the signal to noise ratio of the spectrum.
 
         The signal to noise ratio is calculated as the baseline corrected
@@ -295,7 +309,7 @@ class FourierSpectrum:
         amplitude.
 
         Args:
-            spectrum (FourierSpectrum): The FourierSpectrum object to be
+            spectrum (Spectrum): The Spectrum object to be
                                         converted.
             frequency_of_interest (int, optional): The frequency around
                                                    which the baseline and
@@ -309,6 +323,9 @@ class FourierSpectrum:
         Returns:
             SnrSpectrum: The SnrSpectrum object.
         """
+        if not self._frequency_of_interest_exists():
+            raise ValueError("The frequency of interest has to be set first.")
+
         baseline = self._get_baseline()
         self.spectrum = np.divide(
             self.spectrum,
@@ -316,16 +333,16 @@ class FourierSpectrum:
         )
         return self
 
-    def calculate_phase(self) -> 'FourierSpectrum':
+    def calculate_phase(self) -> 'Spectrum':
         """Calculate the phase of the spectrum.
 
         Returns:
-            Self: The modified FourierSpectrum object.
+            Self: The modified Spectrum object.
         """
         self.phase = np.angle(self.spectrum)
         return self
 
-    def copy(self) -> 'FourierSpectrum':
+    def copy(self) -> 'Spectrum':
         """Copy the object following the same philosophy as mne objects.
 
         Returns:
@@ -333,18 +350,25 @@ class FourierSpectrum:
         """
         return copy.copy(self)
 
-class AmplitudeSpectrum(FourierSpectrum):
-    """A class to store and manipulate the Amplitude Spectrum of a signal.
+    def get_magnitude_at_frequency(self,
+                                   frequency: float,
+                                   margin_frequency: float = 1) -> float:
+        """Get the amplitude at a specific frequency.
 
-    It is the asbolute value of the Fourier Spectrum.
-    """
+        Args:
+            frequency (float): The frequency of interest.
+            margin_frequency (float, optional): The margin around the frequency
+                                               of interest to calculate the
+                                               amplitude. Defaults to None.
 
-class ZscoreSpectrum(FourierSpectrum):
-    """A class to store and manipulate the Zscore Spectrum of a signal.
-
-    It is calculated from the Amplitude Spectrum following the methodology of
-    Rossion et al. 2014 and Jonas et al. 2016.
-    """
-
-class SnrSpectrum(FourierSpectrum):
-    """A class to store and manipulate the SNR of the spectrum."""
+        Returns:
+            float: The amplitude at the chosen frequency.
+        """
+        if margin_frequency:
+            frequency_index = self._get_frequency_index(frequency)
+            margin_index = int(margin_frequency / self.frequency_resolution)
+            return np.mean(self.spectrum[0,
+                                         frequency_index - margin_index:
+                                         frequency_index + margin_index])
+        else:
+            return self.spectrum[0,self._get_frequency_index(frequency)]
