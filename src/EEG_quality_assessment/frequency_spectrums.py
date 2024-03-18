@@ -107,6 +107,7 @@ class Spectrum:
         self.info['sfreq'] = self.sampling_rate
         self.info['frequency_resolution'] = self.frequency_resolution
         self.info['n_channels'] = self.signal.shape[0]
+        self.info['ch_names'] = raw.info['ch_names']
 
         return self
 

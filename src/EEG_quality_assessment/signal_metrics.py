@@ -34,8 +34,6 @@ import numpy as np
 # python -m conda install -c conda-forge scipy or python -m pip install scipy
 import scipy
 
-from .frequency_spectrums import FourierSpectrum
-
 
 def average_rms(signal: np.ndarray) -> float:
     """Calculate the average root mean square of the signal.
@@ -162,7 +160,7 @@ def skewness(signal: np.ndarray) -> float:
     return scipy.stats.skew(signal)
 
 
-def signal_variance(signal: np.ndarray) -> float:
+def variance(signal: np.ndarray) -> float:
     """Calculate the variance of the signal.
 
     Args:
@@ -228,18 +226,6 @@ def epochs_snr(epochs: mne.Epochs) -> mne.EvokedArray:
     snr_decibel = 10 * np.log10(snr)
     snr_decibel_mne_object = mne.EvokedArray(snr_decibel, epochs.info)
     return snr_decibel_mne_object
-
-def calculate_fft(raw: mne.io.Raw) -> FourierSpectrum:
-    """Calculate the Fourier Spectrum of the signal.
-
-    Args:
-        raw (mne.io.Raw): the raw signal to be analyzed
-
-    Returns:
-        FourierSpectrum: a FourierSpectrum object containing the Fourier
-                         Spectrum of the signal
-    """
-    return FourierSpectrum(raw)
 
 
 # TODO
