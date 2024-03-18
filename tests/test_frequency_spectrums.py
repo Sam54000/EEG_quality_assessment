@@ -32,37 +32,41 @@ import pytest
 def raw() -> mne.io.Raw:
     """Create a raw object from mne.io.Raw."""
     return mne.io.read_raw_edf(
-        './EEG_quality_assessment/tests/sub-01_ses-01_task-rest_run-01_eeg.edf'
+        './EEG_quality_assessment/tests/sub-06_ses-01_task-rest_run-01_eeg.edf'
         )
 
 @pytest.fixture
-def fft_spectrum(raw:mne.io.Raw) -> 'spectrums_package.FourierSpectrum':
-    """Create a FourierSpectrum object from mne.io.Raw."""
+def fft_spectrum(raw:mne.io.Raw) -> 'spectrums_package.Spectrum':
+    """Create a Spectrum object from mne.io.Raw."""
     r = raw
-    fft_object = spectrums_package.FourierSpectrum()
+    fft_object = spectrums_package.Spectrum()
     fft = fft_object.calculate_fft(r)
     return fft
 
 @pytest.fixture
 def amplitude_spectrum(
-    fft_spectrum:spectrums_package.FourierSpectrum
-    ) -> 'spectrums_package.FourierSpectrum':
-    """Create a FourierSpectrum object from mne.io.Raw."""
+    fft_spectrum:spectrums_package.Spectrum
+    ) -> 'spectrums_package.Spectrum':
+    """Create a Spectrum object from mne.io.Raw."""
     return fft_spectrum.calculate_amplitude()
 
 @pytest.fixture
 def zscore_spectrum(
-    amplitude_spectrum:spectrums_package.AmplitudeSpectrum
-    ) -> 'spectrums_package.FourierSpectrum':
-    """Create a FourierSpectrum object from mne.io.Raw."""
-    return  amplitude_spectrum.calculate_zscore()
+    fft_spectrum:spectrums_package.Spectrum
+    ) -> 'spectrums_package.Spectrum':
+    """Create a Spectrum object from mne.io.Raw."""
+
+    fft_spectrum._set_frequency_of_interest(18)
+    return fft_spectrum.copy().calculate_zscore()
 
 @pytest.fixture
 def snr_spectrum(
-    amplitude_spectrum:spectrums_package.AmplitudeSpectrum
-    ) -> 'spectrums_package.FourierSpectrum':
-    """Create a FourierSpectrum object from mne.io.Raw."""
-    return amplitude_spectrum.calculate_snr()
+    fft_spectrum:spectrums_package.Spectrum
+    ) -> 'spectrums_package.Spectrum':
+    """Create a Spectrum object from mne.io.Raw."""
+
+    fft_spectrum._set_frequency_of_interest(18)
+    return fft_spectrum.copy().calculate_snr()
 
 def test_shape_fft(raw: mne.io.Raw,fft_spectrum:numpy.ndarray) -> None:
     """Test that fft() returns the correct value for valid input."""
@@ -78,11 +82,22 @@ def test_type_fft(fft_spectrum:numpy.ndarray) -> None:
 def test_shape_frequencies(fft_spectrum:numpy.ndarray) -> None:
     assert fft_spectrum.frequencies.shape[0] == fft_spectrum.spectrum.shape[1]
 
-def test_type_frequencies(fft_spectrum:numpy.ndarray) -> None:
-    fft_spectrum._set_frequency_of_interest(13)
+def test_value_frequency(fft_spectrum:numpy.ndarray) -> None:
+    fft_spectrum._set_frequency_of_interest(18)
     desired_frequency = fft_spectrum.frequency_of_interest
-    frequency_index = fft_spectrum._get_frequency_index()
+    frequency_index = fft_spectrum._get_frequency_index(18)
     actual_frequency = fft_spectrum.frequencies[frequency_index]
     spectrum_frequency_resolution = fft_spectrum.frequency_resolution
-    freq_difference = numpy.abs(actual_frequency - desired_frequency)
+    freq_difference = numpy.abs(actual_frequency - 18)
     assert freq_difference < spectrum_frequency_resolution
+
+def test_size_max_amplitude(amplitude_spectrum:numpy.ndarray) -> None:
+    frequency_window = (17,20)
+    magnitudes = amplitude_spectrum.get_peak_magnitude_in_window(frequency_window)
+    assert magnitudes["peak_magnitude"].shape[0] == 64
+
+def test_values_frequency_window(amplitude_spectrum:numpy.ndarray) -> None:
+    frequency_window = (17,20)
+    magnitudes = amplitude_spectrum.get_peak_magnitude_in_window(frequency_window)
+    assert frequency_window[0] <= numpy.max(magnitudes["peak_frequency_Hz"])
+    assert frequency_window[1] >= numpy.max(magnitudes["peak_frequency_Hz"])

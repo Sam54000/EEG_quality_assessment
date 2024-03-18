@@ -84,7 +84,8 @@ class Spectrum:
 
     def __init__(self) -> None:
         """Initialize."""
-        self.process_history: list = list()
+        self.info: dict = dict()
+        self.info['process_history'] = list()
 
     def calculate_fft(self, raw: mne.io.Raw) -> 'Spectrum':
         """Initialize the Spectrum object.
@@ -102,6 +103,11 @@ class Spectrum:
         self.frequencies = self.frequencies[: len(self.frequencies) // 2]
         self.spectrum = self.spectrum[:,:spectrum_length// 2]
         self.frequency_resolution = self.frequencies[1] - self.frequencies[0]
+        self.info['units'] = "V**2"
+        self.info['sfreq'] = self.sampling_rate
+        self.info['frequency_resolution'] = self.frequency_resolution
+        self.info['n_channels'] = self.signal.shape[0]
+
         return self
 
     def _adjust_signal_length(self) -> 'Spectrum':
@@ -121,7 +127,7 @@ class Spectrum:
             new_length = 2 ** int(np.log2(current_length))
             np.resize(self.signal, self.signal[:, :new_length].shape)
 
-        self.process_history.append("Signal length adjusted to be a power of 2")
+        self.info['process_history'].append("Signal length adjusted to be a power of 2")
 
         return self
 
@@ -140,7 +146,7 @@ class Spectrum:
             typing.Self: The Spectrum object
         """
         self.frequency_of_interest = frequency_of_interest
-        self.process_history.append(
+        self.info['process_history'].append(
             f"Frequency of interest set to {frequency_of_interest}"
             )
         return self
@@ -192,7 +198,7 @@ class Spectrum:
             frequency_index + nb_bins : frequency_index + nb_steps * nb_bins
         ]
 
-        self.process_history.append(
+        self.info['process_history'].append(
             f"""Amplitude of the {(nb_steps-1)*2} surrounding bins of the
             frequency of interest calculated with a frequency step of
             {desired_frequency_step} Hz"""
@@ -238,7 +244,7 @@ class Spectrum:
             self : The modified Spectrum object.
         """
         baseline = self._get_baseline()
-        self.process_history.append("Baseline corrected")
+        self.info['process_history'].append("Baseline corrected")
         self.spectrum = self.spectrum - baseline
         return self
 
@@ -248,7 +254,7 @@ class Spectrum:
         Returns:
             bool: True if the baseline has been corrected, False otherwise.
         """
-        return 'basline corrected' in self.process_history
+        return 'basline corrected' in self.info['process_history']
 
     def calculate_amplitude(self) -> 'Spectrum':
         """Create an AmplitudeSpectrum object from a Spectrum object.
@@ -261,6 +267,7 @@ class Spectrum:
             AmplitudeSpectrum: The AmplitudeSpectrum object.
         """
         self.spectrum = np.abs(self.spectrum)
+        self.info['units'] = "V**2"
         return self
 
     def calculate_zscore(self) -> 'Spectrum':
@@ -298,6 +305,8 @@ class Spectrum:
             self.spectrum,
             surrounding_bin_std
         )
+        self.info['process_history'].append("Zscore calculated")
+        self.info['units'] = "A.U"
 
         return self
 
@@ -331,6 +340,8 @@ class Spectrum:
             self.spectrum,
             baseline
         )
+        self.info['process_history'].append("Snr calculated")
+        self.info['units'] = "dB"
         return self
 
     def calculate_phase(self) -> 'Spectrum':
@@ -340,6 +351,8 @@ class Spectrum:
             Self: The modified Spectrum object.
         """
         self.phase = np.angle(self.spectrum)
+        self.info['process_history'].append("Phase calculated")
+        self.info['units'] = "rad"
         return self
 
     def copy(self) -> 'Spectrum':
@@ -348,6 +361,7 @@ class Spectrum:
         Returns:
             self: A copy of the instance
         """
+        self.info['process_history'].append("Object copied")
         return copy.copy(self)
 
     def get_magnitude_at_frequency(self,
@@ -373,27 +387,39 @@ class Spectrum:
         else:
             return self.spectrum[0,self._get_frequency_index(frequency)]
 
-    def get_peak_magnitude_within_window(self, window: tuple = (17,20)) -> dict:
+
+    def get_peak_magnitude_in_window(self,
+                                     frequency_window: tuple = (17,20)) -> dict:
         """Get the peak magnitude and frequency within a specific window.
 
         Args:
-            window (tuple, optional): The window around the frequency of
-                                      interest. Defaults to (17,20).
+            frequency_window (tuple, optional): The chosen frequency window
+                                                to get the max amplitude
 
         Returns:
             dict: A dictionary containing the window, the peak magnitude and
                   the peak frequency.
         """
-        index_window = (self._get_frequency_index(window[0]),
-                        self._get_frequency_index(window[1]))
+        index_window = [self._get_frequency_index(frequency)
+                        for frequency in frequency_window]
+
         magnitude_window = self.spectrum[:,index_window[0]:index_window[1]]
+        print(index_window)
         peak_magnitude = np.max(magnitude_window, axis=1)
-        peak_frequency_Hz = self.frequencies[
-            np.argmax(magnitude_window, axis=1)
-        ]
+        index_max = np.argmax(magnitude_window,axis=1)
+        index_max += index_window[0]
+        peak_frequency_Hz = [self.frequencies[index] for index in index_max]
+        self.info['process_history'].append(
+            f"Peak magnitude and frequency calculated in the window {frequency_window}"
+        )
 
         return {
-            "window_Hz": window,
+            "window_Hz": frequency_window,
+            "window_idx": index_window,
             "peak_magnitude": peak_magnitude,
+            "indices_max": index_max,
             "peak_frequency_Hz": peak_frequency_Hz
         }
+
+# TODO
+# - Elaborate more the info
