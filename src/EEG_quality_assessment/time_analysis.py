@@ -23,6 +23,7 @@
 # ===============================================================================
 """MODULE DESCRIPTION HERE."""
 # standard library imports
+import typing
 
 # third-party imports (and comments indicating how to install them)
 # python -m conda install -c conda-forge mne or python -m pip install mne
@@ -35,7 +36,7 @@ import numpy as np
 import scipy
 
 
-def average_rms(signal: np.ndarray) -> float:
+def average_rms(signal: np.ndarray, mean_kwargs: dict) -> float:
     """Calculate the average root mean square of the signal.
 
     The RMS of a signal is regarded as the magnitude of it.
@@ -43,14 +44,17 @@ def average_rms(signal: np.ndarray) -> float:
     Args:
         signal (numpy.ndarray): the signal to be analyzed
                                 has to be a 1D array
+        mean_kwargs (dict): the keyword arguments to be passed to the np.mean
 
     Returns:
         float: the average root mean square of the signal
     """
-    return np.sqrt(np.mean(signal**2))
+    return np.sqrt(np.mean(signal**2, **mean_kwargs))
 
 
-def max_gradient(signal: np.ndarray) -> float:
+def max_gradient(signal: np.ndarray,
+                 diff_kwargs: dict,
+                 max_kwargs: dict) -> float:
     """Calculate the maximum gradient of the signal.
 
     The maximum gradient is the maximum absolute value
@@ -61,14 +65,18 @@ def max_gradient(signal: np.ndarray) -> float:
     Args:
         signal (numpy.ndarray): the signal to be analyzed
                                 has to be a 1D array
+        diff_kwargs (dict): the keyword arguments to be passed to the np.diff
+        max_kwargs (dict): the keyword arguments to be passed to the np.max
 
     Returns:
         float: the maximum gradient of the signal
     """
-    return np.max(np.abs(np.diff(signal)))
+    return np.max(np.abs(np.diff(signal, **diff_kwargs)), **max_kwargs)
 
 
-def zero_crossing_rate(signal: np.ndarray) -> float:
+def zero_crossing_rate(signal: np.ndarray,
+                       diff_kwargs: dict,
+                       mean_kwargs: dict) -> float:
     """Calculate the zero crossing rate of the signal.
 
     It is the rate at which the signal cross the 0 line.
@@ -78,14 +86,18 @@ def zero_crossing_rate(signal: np.ndarray) -> float:
     Args:
         signal (numpy.ndarray): the signal to be analyzed
                                 has to be a 1D array
+        diff_kwargs (dict): the keyword arguments to be passed to the np.diff
+        mean_kwargs (dict): the keyword arguments to be passed to the np.mean
 
     Returns:
         float: the zero crossing rate of the signal
     """
-    return np.mean(np.diff(np.sign(signal) != 0))
+    return np.mean(np.diff(np.sign(signal) != 0, **diff_kwargs), **mean_kwargs)
 
 
-def hjorth_mobility(signal: np.ndarray) -> float:
+def hjorth_mobility(signal: np.ndarray,
+                    diff_kwargs:dict,
+                    var_kwargs:dict) -> float:
     """Calculate the mobility from the Hjorth parameters.
 
     The mobility is a measure of the signal's frequency content.
@@ -95,16 +107,21 @@ def hjorth_mobility(signal: np.ndarray) -> float:
     Args:
         signal (np.ndarrary): the signal to be analyzed
                               has to be a 1D array.
+        diff_kwargs (dict): the keyword arguments to be passed to the np.diff
+        var_kwargs (dict): the keyword arguments to be passed to the np.var
 
     Returns:
         float: the mobility score of the signal
     """
-    derived_signal_variance = np.var(np.diff(signal))
-    signal_variance = np.var(signal)
+    derived_signal_variance = np.var(np.diff(signal, **diff_kwargs), **var_kwargs)
+    signal_variance = np.var(signal, **var_kwargs)
     return np.sqrt(derived_signal_variance / signal_variance)
 
 
-def hjorth_complexity(signal: np.ndarray) -> float:
+def hjorth_complexity(signal: np.ndarray,
+                      diff_kwargs:dict,
+                      diff_mobility_kwargs:dict,
+                      var_mobility_kwargs) -> np.ndarray:
     """Calculate the complexity from the Hjorth parameters.
 
     The complexity, as it is indicated by the name, is a measure of the
@@ -114,16 +131,22 @@ def hjorth_complexity(signal: np.ndarray) -> float:
     Args:
         signal (np.ndarray): the signal to be analyzed
                               has to be a 1D array.
+        diff_kwargs (dict): the keyword arguments to be passed to the np.diff
 
     Returns:
         float: the complexity score of the signal
     """
-    derived_signal_mobility = hjorth_mobility(np.diff(signal))
-    signal_mobility = hjorth_mobility(signal)
+    derived_signal_mobility = hjorth_mobility(np.diff(signal,
+                                                      **diff_kwargs),
+                                              **diff_mobility_kwargs,
+                                              **var_mobility_kwargs)
+    signal_mobility = hjorth_mobility(signal,
+                                      **diff_mobility_kwargs,
+                                      **var_mobility_kwargs)
     return derived_signal_mobility / signal_mobility
 
 
-def kurtosis(signal: np.ndarray) -> float:
+def kurtosis(*args, **kwargs) -> float:  # noqa: ANN002, ANN003
     """Calculate the kurtosis of the signal.
 
     The kurtosis is a measure of the "tailedness" of the signal.
@@ -132,17 +155,13 @@ def kurtosis(signal: np.ndarray) -> float:
     signal has a lof of outliers. A low kurtosis means that the tails are light
     and the signal has less outliers.
 
-    Args:
-        signal (np.ndarray): the signal to be analyzed
-                              has to be a 1D array.
-
     Returns:
         float: _description_
     """
-    return scipy.stats.kurtosis(signal)
+    return scipy.stats.kurtosis(*args, **kwargs)
 
 
-def skewness(signal: np.ndarray) -> float:
+def skewness(*args, **kwargs) -> float:  # noqa: ANN002, ANN003
     """Calculate the skewness of the signal.
 
     The skewness is a measure of the asymmetry of the signal.
@@ -150,59 +169,44 @@ def skewness(signal: np.ndarray) -> float:
     a negative skewness means that the signal is skewed to the left.
     It is a complementary measure to the kurtosis.
 
-    Args:
-        signal (np.ndarray): the signal to be analyzed
-                              has to be a 1D array.
-
     Returns:
         float: the skewness of the signal
     """
-    return scipy.stats.skew(signal)
+    return scipy.stats.skew(*args, **kwargs)
 
 
-def variance(signal: np.ndarray) -> float:
+def variance(*args, **kwargs) -> float:  # noqa: ANN002
     """Calculate the variance of the signal.
-
-    Args:
-        signal (np.ndarray): the signal to be analyzed
-                              has to be a 1D array.
 
     Returns:
         float: the variance of the signal
     """
-    return np.var(signal)
+    return np.var(*args, **kwargs)
 
 
-def signal_range(signal: np.ndarray) -> float:
+def signal_range(*args, **kwargs) -> float:
     """Calculate the range of the signal.
 
     Range of the signal is the difference between the maximum and the minimum
     values.
 
-    Args:
-        signal (np.ndarray): the signal to be analyzed
-                              has to be a 1D array.
-
     Returns:
         float: the range of the signal
     """
-    return np.max(signal) - np.min(signal)
+    return np.subtract(np.max(*args, **kwargs),
+                       np.min(*args, **kwargs))
 
 
-def signal_IQR(signal: np.ndarray) -> float:
+def signal_IQR(*args, **kwargs) -> float:
     """Calculate the interquartile range of the signal.
 
     The interquartile range is the range of the middle 50% of the signal.
     It is less sensitive to outliers than the range.
 
-    Args:
-        signal (np.ndarray): the signal to be analyzed
-                              has to be a 1D array.
-
     Returns:
         float: the interquartile range of the signal
     """
-    return scipy.stats.iqr(signal)
+    return scipy.stats.iqr(*args, **kwargs)
 
 
 # No time window needed. I can deal with mne object now
@@ -228,9 +232,8 @@ def epochs_snr(epochs: mne.Epochs) -> mne.EvokedArray:
     return snr_decibel_mne_object
 
 
+
 # TODO
 # - Make a class object to store the steps of the process
 # in order to keep a history of what has been done.
-# - The argument "frequency_of_interest" doesn't respect the dry principle
-# I should refactor this in order to have to declare the frequency only once.
-# - Create a subclass for the different spectrum types (amplitude, zscore, snr, phase)
+# - Think about epoching the gradient peak.

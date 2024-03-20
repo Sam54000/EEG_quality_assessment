@@ -22,7 +22,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 # ===============================================================================
-from EEG_quality_assessment import frequency_spectrums as spectrums_package
+from EEG_quality_assessment import frequency_analysis as spectrums_package
 import mne
 import numpy
 import pytest
