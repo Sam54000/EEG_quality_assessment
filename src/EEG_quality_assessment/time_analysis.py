@@ -36,7 +36,7 @@ import numpy as np
 import scipy
 
 
-def average_rms(signal: np.ndarray, mean_kwargs: dict) -> float:
+def average_rms(signal: np.ndarray, axis = 1) -> float:
     """Calculate the average root mean square of the signal.
 
     The RMS of a signal is regarded as the magnitude of it.
@@ -49,12 +49,10 @@ def average_rms(signal: np.ndarray, mean_kwargs: dict) -> float:
     Returns:
         float: the average root mean square of the signal
     """
-    return np.sqrt(np.mean(signal**2, **mean_kwargs))
+    return np.sqrt(np.mean(signal**2, axis=axis))
 
 
-def max_gradient(signal: np.ndarray,
-                 diff_kwargs: dict,
-                 max_kwargs: dict) -> float:
+def max_gradient(signal: np.ndarray,axis:int = 1) -> float:
     """Calculate the maximum gradient of the signal.
 
     The maximum gradient is the maximum absolute value
@@ -65,18 +63,15 @@ def max_gradient(signal: np.ndarray,
     Args:
         signal (numpy.ndarray): the signal to be analyzed
                                 has to be a 1D array
-        diff_kwargs (dict): the keyword arguments to be passed to the np.diff
-        max_kwargs (dict): the keyword arguments to be passed to the np.max
+        axis (int): the axis along which the gradient is calculated
 
     Returns:
         float: the maximum gradient of the signal
     """
-    return np.max(np.abs(np.diff(signal, **diff_kwargs)), **max_kwargs)
+    return np.max(np.abs(np.diff(signal, axis = axis)), axis=axis)
 
 
-def zero_crossing_rate(signal: np.ndarray,
-                       diff_kwargs: dict,
-                       mean_kwargs: dict) -> float:
+def zero_crossing_rate(signal: np.ndarray, axis:int = 1) -> float:
     """Calculate the zero crossing rate of the signal.
 
     It is the rate at which the signal cross the 0 line.
@@ -86,18 +81,15 @@ def zero_crossing_rate(signal: np.ndarray,
     Args:
         signal (numpy.ndarray): the signal to be analyzed
                                 has to be a 1D array
-        diff_kwargs (dict): the keyword arguments to be passed to the np.diff
-        mean_kwargs (dict): the keyword arguments to be passed to the np.mean
+        axis (int): the axis along which the zero crossing rate is calculated
 
     Returns:
         float: the zero crossing rate of the signal
     """
-    return np.mean(np.diff(np.sign(signal) != 0, **diff_kwargs), **mean_kwargs)
+    return np.mean(np.diff(np.sign(signal) != 0, axis = axis), axis = axis)
 
 
-def hjorth_mobility(signal: np.ndarray,
-                    diff_kwargs:dict,
-                    var_kwargs:dict) -> float:
+def hjorth_mobility(signal: np.ndarray,axis:int = 1) -> float:
     """Calculate the mobility from the Hjorth parameters.
 
     The mobility is a measure of the signal's frequency content.
@@ -107,21 +99,17 @@ def hjorth_mobility(signal: np.ndarray,
     Args:
         signal (np.ndarrary): the signal to be analyzed
                               has to be a 1D array.
-        diff_kwargs (dict): the keyword arguments to be passed to the np.diff
-        var_kwargs (dict): the keyword arguments to be passed to the np.var
+        axis (int): the axis along which the mobility is calculated
 
     Returns:
         float: the mobility score of the signal
     """
-    derived_signal_variance = np.var(np.diff(signal, **diff_kwargs), **var_kwargs)
-    signal_variance = np.var(signal, **var_kwargs)
+    derived_signal_variance = np.var(np.diff(signal, axis = axis), axis = axis)
+    signal_variance = np.var(signal, axis = axis)
     return np.sqrt(derived_signal_variance / signal_variance)
 
 
-def hjorth_complexity(signal: np.ndarray,
-                      diff_kwargs:dict,
-                      diff_mobility_kwargs:dict,
-                      var_mobility_kwargs) -> np.ndarray:
+def hjorth_complexity(signal: np.ndarray,axis:int = 1) -> np.ndarray:
     """Calculate the complexity from the Hjorth parameters.
 
     The complexity, as it is indicated by the name, is a measure of the
@@ -131,82 +119,33 @@ def hjorth_complexity(signal: np.ndarray,
     Args:
         signal (np.ndarray): the signal to be analyzed
                               has to be a 1D array.
-        diff_kwargs (dict): the keyword arguments to be passed to the np.diff
+        axis (int): the axis along which the complexity is calculated
 
     Returns:
         float: the complexity score of the signal
     """
-    derived_signal_mobility = hjorth_mobility(np.diff(signal,
-                                                      **diff_kwargs),
-                                              **diff_mobility_kwargs,
-                                              **var_mobility_kwargs)
-    signal_mobility = hjorth_mobility(signal,
-                                      **diff_mobility_kwargs,
-                                      **var_mobility_kwargs)
+    derived_signal_mobility = hjorth_mobility(np.diff(signal,axis = axis),
+                                                axis = axis)
+    signal_mobility = hjorth_mobility(signal,axis = axis)
     return derived_signal_mobility / signal_mobility
 
 
-def kurtosis(*args, **kwargs) -> float:  # noqa: ANN002, ANN003
-    """Calculate the kurtosis of the signal.
-
-    The kurtosis is a measure of the "tailedness" of the signal.
-    In other words it is a measure of how heavy the tails of the signal value
-    distribution are. A high kurtosis means that the tails are heavy thus the
-    signal has a lof of outliers. A low kurtosis means that the tails are light
-    and the signal has less outliers.
-
-    Returns:
-        float: _description_
-    """
-    return scipy.stats.kurtosis(*args, **kwargs)
-
-
-def skewness(*args, **kwargs) -> float:  # noqa: ANN002, ANN003
-    """Calculate the skewness of the signal.
-
-    The skewness is a measure of the asymmetry of the signal.
-    A positive skewness means that the signal is skewed to the right,
-    a negative skewness means that the signal is skewed to the left.
-    It is a complementary measure to the kurtosis.
-
-    Returns:
-        float: the skewness of the signal
-    """
-    return scipy.stats.skew(*args, **kwargs)
-
-
-def variance(*args, **kwargs) -> float:  # noqa: ANN002
-    """Calculate the variance of the signal.
-
-    Returns:
-        float: the variance of the signal
-    """
-    return np.var(*args, **kwargs)
-
-
-def signal_range(*args, **kwargs) -> float:
+def signal_range(signal:np.ndarray, axis:int = 1) -> float:
     """Calculate the range of the signal.
 
     Range of the signal is the difference between the maximum and the minimum
     values.
 
+    Args:
+        signal (np.ndarray): the signal to be analyzed
+                              has to be a 1D array.
+        axis (int): the axis along which the range is calculated
+
     Returns:
         float: the range of the signal
     """
-    return np.subtract(np.max(*args, **kwargs),
-                       np.min(*args, **kwargs))
-
-
-def signal_IQR(*args, **kwargs) -> float:
-    """Calculate the interquartile range of the signal.
-
-    The interquartile range is the range of the middle 50% of the signal.
-    It is less sensitive to outliers than the range.
-
-    Returns:
-        float: the interquartile range of the signal
-    """
-    return scipy.stats.iqr(*args, **kwargs)
+    return np.subtract(np.max(signal, axis = axis),
+                       np.min(signal, axis = axis))
 
 
 # No time window needed. I can deal with mne object now
