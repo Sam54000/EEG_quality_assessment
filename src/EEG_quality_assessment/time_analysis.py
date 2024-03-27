@@ -44,7 +44,7 @@ def average_rms(signal: np.ndarray, axis = 1) -> float:
     Args:
         signal (numpy.ndarray): the signal to be analyzed
                                 has to be a 1D array
-        mean_kwargs (dict): the keyword arguments to be passed to the np.mean
+        axis (int): the axis along which the RMS is calculated
 
     Returns:
         float: the average root mean square of the signal
@@ -93,8 +93,8 @@ def hjorth_mobility(signal: np.ndarray,axis:int = 1) -> float:
     """Calculate the mobility from the Hjorth parameters.
 
     The mobility is a measure of the signal's frequency content.
-    It is the ratio of the standard deviation of the derivative of the signal
-    to the standard deviation of the signal.
+    It is the ratio of the variance of the derivative of the signal
+    to the variance of the signal.
 
     Args:
         signal (np.ndarrary): the signal to be analyzed
@@ -147,10 +147,80 @@ def signal_range(signal:np.ndarray, axis:int = 1) -> float:
     return np.subtract(np.max(signal, axis = axis),
                        np.min(signal, axis = axis))
 
+def variance(signal:np.ndarray, axis:int = 1) -> np.ndarray:
+    """Calculate the variance of an array.
+
+    Calculate the variance of the signal.
+
+    Args:
+        signal (np.ndarray): The signal to be analyzed
+        axis (int, optional): The axis along which the calculation
+                              will be performed. Defaults to 1.
+
+    Returns:
+        np.ndarray: The variance of the signal with a shape of (channels,time)
+
+    Note:
+        I could just have used np.var but because sometime it's numpy and sometime
+        it's scipy I prefere unifying everything in order to be able to call
+        the function in serie
+    """
+    return np.var(signal,axis=axis)
+
+def skewness(signal:np.ndarray, axis:int = 1) -> np.ndarray:
+    """Calculate the skewness.
+
+    Skewness is a measure of the asymmetry of the probability distribution
+    of a real-valued random variable about its mean. The skewness value can be
+    positive or negative, or even undefined.
+
+    Args:
+        signal (np.ndarray): The signal to be analyzed
+        axis (int, optional): The axis along which the calculation
+                              will be performed. Defaults to 1.
+
+    Returns:
+        np.ndarray: The skewness of the signal with a shape of (channels, time)
+    """
+    return scipy.stats.skew(signal, axis = axis)
+
+def kurtosis(signal:np.ndarray, axis:int = 1) -> np.ndarray:
+    """Calculate the kurtosis of the signal.
+
+    The kurtosis is a measure of the "tailedness" of the probability
+    distribution of a real-valued random variable. In a similar way to the
+    skewness, the kurtosis value can be positive or negative, or even undefined.
+
+    Args:
+        signal (np.ndarray): The signal to be analyzed
+        axis (int, optional): The axis along which the calculation
+                              will be performed. Defaults to 1.
+
+    Returns:
+        np.ndarray: The kurtosis of the signal with a shape of (channels, time)
+    """
+    return scipy.stats.kurtosis(signal, axis = axis)
+
+def signal_iqr(signal:np.ndarray, axis:int = 1) -> np.ndarray:
+    """Calculate the interquartile range of the signal.
+
+    The interquartile range is a measure of statistical dispersion,
+    or how scattered, the values in a dataset are. It is the difference
+    between the third quartile and the first quartile.
+
+    Args:
+        signal (np.ndarray): The signal to be analyzed
+        axis (int, optional): The axis along which the calculation
+                              will be performed. Defaults to 1.
+
+    Returns:
+        np.ndarray: The interquartile range of the signal with a shape of (channels, time)
+    """
+    return scipy.stats.iqr(signal, axis = axis)
 
 # No time window needed. I can deal with mne object now
 # TO FINISH
-def epochs_snr(epochs: mne.Epochs) -> mne.EvokedArray:
+def snr_epoch(signal: np.ndarray) -> np.ndarray:
     """Calculate the signal to noise ratio of an Evoked Related Potential.
 
     What is considered here as the signal is the ERP (the average signal
@@ -160,15 +230,13 @@ def epochs_snr(epochs: mne.Epochs) -> mne.EvokedArray:
         epochs (mne.Epochs): An mne.Epochs object containing the epochs
 
     Returns:
-        mne.EvokedArray: An mne.EvokedArray object containing the signal to noise
-                         ratio of the ERP
+        np.ndarray: The signal to noise ratio of the epochs
     """
-    erp_signal = epochs.copy().average().get_data()
-    erp_noise = epochs.copy().get_data().std(axis=0)
+    erp_signal = signal.mean(axis=0)
+    erp_noise = signal.std(axis=0)
     snr = np.divide(erp_signal**2, erp_noise**2)
     snr_decibel = 10 * np.log10(snr)
-    snr_decibel_mne_object = mne.EvokedArray(snr_decibel, epochs.info)
-    return snr_decibel_mne_object
+    return snr_decibel
 
 
 

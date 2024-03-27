@@ -69,7 +69,6 @@ Note:
 """
 # standard library imports
 import copy
-from typing import Any, Callable
 
 # third-party imports (and comments indicating how to install them)
 # python -m conda install -c conda-forge mne or python -m pip install mne
@@ -160,16 +159,40 @@ class Spectrum:
         """
         return hasattr(self, "frequency_of_interest")
 
-    def _get_frequency_index(self, frequency: float) -> int:
+    def _get_frequency_index(self, frequency: np.ndarray | float) -> np.ndarray:
         """Get the index of the frequency of interest in the spectrum.
 
         Args:
-            frequency (float): in Hertz
+            frequency (np.ndarray | float): The frequency of interest.
 
         Returns:
             int: The index (position) in the spectrum
         """
-        return np.argmin(np.abs(self.frequencies - frequency))
+        if isinstance(frequency, np.ndarray):
+            freq_per_electrode = np.broadcast_to(self.frequencies,
+                                                (frequency.shape[0],
+                                                self.frequencies.shape[0])
+            )
+
+            frequencies_index = np.argmin(
+                np.abs(
+                    np.subtract(
+                        frequency.reshape(freq_per_electrode.shape[0],1),
+                        freq_per_electrode
+                    )
+                ),
+                axis = 1,
+            )
+
+        elif isinstance(frequency, (int, float)):
+            frequencies_index = np.argmin(
+                np.abs(self.frequencies - frequency),
+            )
+
+        else:
+            raise TypeError("The frequency has to be a float or an array of floats")
+
+        return frequencies_index.astype(int)
 
     def _get_amplitude_surounding_bins(
         self,
@@ -179,7 +202,7 @@ class Spectrum:
         """Get the amplitude of the surrounding bins of the frequency of interest.
 
         Args:
-            frequency_of_interest (float): The frequency around
+            frequency_of_interest (float ): The frequency around
             desired_frequency_step (float, optional): _description_. Defaults to 0.0135
                                                       to reproduce the articles
                                                       methodology.
@@ -191,12 +214,26 @@ class Spectrum:
         frequency_index = self._get_frequency_index(self.frequency_of_interest)
 
         nb_bins = int(desired_frequency_step / self.frequency_resolution)
-        amplitude_surrounding_left_bins = self.spectrum[:,
-            frequency_index - nb_steps * nb_bins : frequency_index - nb_bins
+        indices_left = np.linspace(
+            frequency_index - nb_steps * nb_bins,
+            frequency_index - nb_bins,
+            axis=1,
+        )
+
+        indices_right = np.linspace(
+            frequency_index + nb_bins,
+            frequency_index + nb_steps * nb_bins,
+            axis=1,
+        )
+
+        amplitude_surrounding_left_bins = self.spectrum[
+            np.arange(stop = frequency_index.shape[0]),
+            indices_left.astype(int).T
         ]
 
-        amplitude_surrounding_right_bins = self.spectrum[:,
-            frequency_index + nb_bins : frequency_index + nb_steps * nb_bins
+        amplitude_surrounding_right_bins = self.spectrum[
+            np.arange(stop = frequency_index.shape[0]),
+            indices_right.astype(int).T
         ]
 
         self.info['process_history'].append(
@@ -206,7 +243,8 @@ class Spectrum:
         )
 
         return np.concatenate(
-            (amplitude_surrounding_left_bins, amplitude_surrounding_right_bins),
+            (amplitude_surrounding_left_bins.T,
+             amplitude_surrounding_right_bins.T),
             axis=1
         )
 
@@ -223,7 +261,7 @@ class Spectrum:
         if not self._frequency_of_interest_exists():
             raise ValueError("The frequency of interest has to be set first.")
         amplitude_surrounding_bins = self._get_amplitude_surounding_bins()
-        return np.mean(amplitude_surrounding_bins)
+        return np.mean(amplitude_surrounding_bins, axis=1).reshape(-1,1)
 
     def correct_baseline(self) -> 'Spectrum':
         """Remove the baseline of the spectrum.
@@ -246,7 +284,7 @@ class Spectrum:
         """
         baseline = self._get_baseline()
         self.info['process_history'].append("Baseline corrected")
-        self.spectrum = self.spectrum - baseline
+        self.spectrum = np.subtract(self.spectrum,baseline)
         return self
 
     def _baseline_corrected(self) -> bool:
@@ -256,6 +294,29 @@ class Spectrum:
             bool: True if the baseline has been corrected, False otherwise.
         """
         return 'basline corrected' in self.info['process_history']
+
+    def average_across_channel(self: 'Spectrum') -> 'Spectrum':
+        """Calculate the average across channels."""
+        self.spectrum = np.mean(self.spectrum, axis = 0, keepdims=True)
+        self.spectrum_std = np.std(self.spectrum, axis = 0, keepdims=True)
+
+        return self
+
+    def pick_channels(self, channel_names:list) -> 'Spectrum':
+        """Pick the desired channel.
+
+        The spectrum contain only the desired channels
+
+        Args:
+            channel_names (list, optional): Defaults to None.
+
+        Returns:
+            Spectrum: The spectrum object
+        """
+        channel_truth_table = [channel_name in channel_names
+                               for channel_name in self.info['ch_names']]
+        self.spectrum = self.spectrum[channel_truth_table,:]
+        return self
 
     def calculate_amplitude(self) -> 'Spectrum':
         """Create an AmplitudeSpectrum object from a Spectrum object.
@@ -301,7 +362,11 @@ class Spectrum:
 
         amplitude_surrounding_bins = self._get_amplitude_surounding_bins()
 
-        surrounding_bin_std = np.std(amplitude_surrounding_bins)
+        surrounding_bin_std = np.std(
+            amplitude_surrounding_bins,
+            axis=1
+            ).reshape(-1,1)
+
         self.spectrum = np.divide(
             self.spectrum,
             surrounding_bin_std
@@ -363,34 +428,11 @@ class Spectrum:
             self: A copy of the instance
         """
         self.info['process_history'].append("Object copied")
-        return copy.copy(self)
+        self = copy.copy(self)
+        return self
 
-    def get_magnitude_at_frequency(self,
-                                   frequency: float,
-                                   margin_frequency: float = 1) -> float:
-        """Get the amplitude at a specific frequency.
-
-        Args:
-            frequency (float): The frequency of interest.
-            margin_frequency (float, optional): The margin around the frequency
-                                               of interest to calculate the
-                                               amplitude. Defaults to None.
-
-        Returns:
-            float: The amplitude at the chosen frequency.
-        """
-        if margin_frequency:
-            frequency_index = self._get_frequency_index(frequency)
-            margin_index = int(margin_frequency / self.frequency_resolution)
-            return np.mean(self.spectrum[0,
-                                         frequency_index - margin_index:
-                                         frequency_index + margin_index])
-        else:
-            return self.spectrum[0,self._get_frequency_index(frequency)]
-
-
-    def get_peak_magnitude_in_window(self,
-                                     frequency_window: tuple = (17,20)) -> dict:
+    def get_peak_magnitude(self,
+                           frequency_window: tuple = (17,20)) -> 'Spectrum':
         """Get the peak magnitude and frequency within a specific window.
 
         Args:
@@ -401,26 +443,31 @@ class Spectrum:
             dict: A dictionary containing the window, the peak magnitude and
                   the peak frequency.
         """
-        index_window = [self._get_frequency_index(frequency)
-                        for frequency in frequency_window]
+        if isinstance(frequency_window,tuple):
+            self.index_window = [self._get_frequency_index(frequency)
+                            for frequency in frequency_window]
 
-        magnitude_window = self.spectrum[:,index_window[0]:index_window[1]]
-        print(index_window)
-        peak_magnitude = np.max(magnitude_window, axis=1)
-        index_max = np.argmax(magnitude_window,axis=1)
-        index_max += index_window[0]
-        peak_frequency_Hz = [self.frequencies[index] for index in index_max]
+        elif isinstance(frequency_window,int) or isinstance(frequency_window, float):
+            self.index_window = [self._get_frequency_index(frequency_window)-1,
+                            self._get_frequency_index(frequency_window)+1]
+
+        self.peak_magnitude = np.max(
+            self.spectrum[:,self.index_window[0]:self.index_window[1]],
+            axis=1
+            )
+
+        self.index_max = np.argmax(
+            self.spectrum[:,self.index_window[0]:self.index_window[1]],
+            axis=1
+            ) + self.index_window[0]
+
+        self.peak_frequency_Hz = self.frequencies[self.index_max]
+
         self.info['process_history'].append(
             f"Peak magnitude and frequency calculated in the window {frequency_window}"
         )
 
-        return {
-            "window_Hz": frequency_window,
-            "window_idx": index_window,
-            "peak_magnitude": peak_magnitude,
-            "indices_max": index_max,
-            "peak_frequency_Hz": peak_frequency_Hz
-        }
+        return self
 
 # TODO
 # - Elaborate more the info
