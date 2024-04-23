@@ -125,7 +125,7 @@ class Spectrum:
 
         if current_length & (current_length - 1) != 0:
             new_length = 2 ** int(np.log2(current_length))
-            np.resize(self.signal, self.signal[:, :new_length].shape)
+            self.signal = np.resize(self.signal, (self.signal.shape[0], new_length))
 
         self.info['process_history'].append("Signal length adjusted to be a power of 2")
 
@@ -227,12 +227,12 @@ class Spectrum:
         )
 
         amplitude_surrounding_left_bins = self.spectrum[
-            np.arange(stop = frequency_index.shape[0]),
+            np.arange(frequency_index.shape[0]),
             indices_left.astype(int).T
         ]
 
         amplitude_surrounding_right_bins = self.spectrum[
-            np.arange(stop = frequency_index.shape[0]),
+            np.arange(frequency_index.shape[0]),
             indices_right.astype(int).T
         ]
 

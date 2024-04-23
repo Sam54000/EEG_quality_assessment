@@ -3,9 +3,11 @@ name = "EEG_quality_assessment"
 version = "0.1.0"
 description = "Code to perform eeg signal quality assessment"
 authors = ["Samuel Louviot <sam.louviot@gmail.com>"]
-license = "LGPL-2.1"
+license = "LGPL-3.0"
 readme = "README.md"
-packages = [{include = "EEG_quality_assessment", from = "src"}]
+packages = [
+  {include = "EEG_quality_assessment", from = "src"}
+]
 
 [tool.poetry.dependencies]
 python = ">3.11"
