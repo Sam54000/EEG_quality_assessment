@@ -41,8 +41,6 @@ from EEG_quality_assessment import frequency_analysis, time_analysis
 
 # from EEG_quality_assessment import frequency_analysis, time_analysis
 #
-def compute_frequency_metrics():
-    pass
 
 class SignalMetrics:
     """Class to store the signal metrics of an EEG signal."""
@@ -62,24 +60,27 @@ class SignalMetrics:
             SignalMetrics:  The signal metrics object
         """
         spectrum_object = frequency_analysis.Spectrum()
-        spectrum_object.calculate_fft(self.mne_object)
-        amplitude = spectrum_object.copy().calculate_amplitude()
-        amplitude.get_peak_magnitude(frequency_range)
-        amplitude._set_frequency_of_interest(amplitude.peak_frequency_Hz)
-        zscore = amplitude.copy().calculate_zscore()
-        snr = amplitude.copy().calculate_snr()
+        if isinstance(self.mne_object, mne.io.Raw):
+            spectrum_object.calculate_fft(self.mne_object)
+            amplitude = spectrum_object.copy().calculate_amplitude()
+            amplitude.get_peak_magnitude(frequency_range)
+            amplitude._set_frequency_of_interest(amplitude.peak_frequency_Hz)
+            zscore = amplitude.copy().calculate_zscore()
+            snr = amplitude.copy().calculate_snr()
 
-        for spectrum, name in zip([amplitude, zscore, snr],
-                                  ['amplitude','zscore','snr']):
-            spectrum.get_peak_magnitude(frequency_range)
-            setattr(self, name, spectrum.peak_magnitude)
-            setattr(self, name + '_peak_frequency', spectrum.peak_frequency_Hz)
+            for spectrum, name in zip([amplitude, zscore, snr],
+                                    ['amplitude','zscore','snr']):
+                spectrum.get_peak_magnitude(frequency_range)
+                setattr(self, name, spectrum.peak_magnitude)
+                setattr(self, name + '_peak_frequency', spectrum.peak_frequency_Hz)
+        else:
+            raise ValueError("Frequency analysis is only available for Raw object")
         return self
 
-    def calculate_metrics(self,
+    def calculate_time_metrics(self,
                         sliding_time_window: float = 1,
-                        overlap:float = 0.5,
-                        frequency_range:tuple = (17,20)) -> 'SignalMetrics':
+                        overlap:float = 0.5
+                        ) -> 'SignalMetrics':
         """Calculate the signal metrics of the EEG signal.
 
         Args:
@@ -99,20 +100,6 @@ class SignalMetrics:
         data = self.mne_object.get_data()
 
         if isinstance(self.mne_object, mne.io.Raw):
-            spectrum_object = frequency_analysis.Spectrum()
-            spectrum_object.calculate_fft(self.mne_object)
-            amplitude = spectrum_object.copy().calculate_amplitude()
-            amplitude.get_peak_magnitude(frequency_range)
-            amplitude._set_frequency_of_interest(amplitude.peak_frequency_Hz)
-            zscore = amplitude.copy().calculate_zscore()
-            snr = amplitude.copy().calculate_snr()
-
-            for spectrum, name in zip([amplitude, zscore, snr],
-                                    ['amplitude','zscore','snr']):
-                spectrum.get_peak_magnitude(frequency_range)
-                setattr(self, name, spectrum.peak_magnitude)
-                setattr(self, name + '_peak_frequency', spectrum.peak_frequency_Hz)
-
             window_nb_samples = int((sliding_time_window*self.mne_object.info['sfreq']))
             step = int(window_nb_samples - window_nb_samples *overlap)
             window_view = sliding_window_view(data,
@@ -120,7 +107,7 @@ class SignalMetrics:
                                 axis = 1)[:,::step,:]
             data_epoched = np.moveaxis(window_view, 0, 1)
 
-        else:
+        elif isinstance(self.mne_object, mne.Epochs):
             data_epoched = data
             self.snr_epochs = time_analysis.snr_epoch(data_epoched)
 
