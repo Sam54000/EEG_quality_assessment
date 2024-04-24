@@ -64,7 +64,7 @@ class SignalMetrics:
             SignalMetrics:  The signal metrics object
         """
         spectrum_object = frequency_analysis.Spectrum()
-        if isinstance(self.mne_object, mne.io.Raw):
+        if isinstance(self.mne_object, mne.io.Raw | mne.io.eeglab.eeglab.RawEEGLAB):
             spectrum_object.calculate_fft(self.mne_object)
             amplitude = spectrum_object.copy().calculate_amplitude()
             amplitude.get_peak_magnitude(frequency_range)
@@ -110,7 +110,8 @@ class SignalMetrics:
         """
         data = self.mne_object.get_data()
 
-        if isinstance(self.mne_object, mne.io.Raw):
+        if isinstance(self.mne_object, mne.io.Raw | mne.io.eeglab.eeglab.RawEEGLAB):
+            print(type(self.mne_object))
             window_nb_samples = int((sliding_time_window*self.mne_object.info['sfreq']))
             step = int(window_nb_samples - window_nb_samples *overlap)
             window_view = sliding_window_view(data,
