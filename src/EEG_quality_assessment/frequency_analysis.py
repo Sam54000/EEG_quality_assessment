@@ -95,14 +95,12 @@ class Spectrum:
         self.sampling_rate = raw.info["sfreq"]
         self.signal = raw.get_data()
         self._adjust_signal_length()
-        self.spectrum = np.fft.fft(self.signal)
         spectrum_length = np.shape(self.signal)[1]
+        self.spectrum = np.fft.rfft(self.signal) * 2 / spectrum_length
         self.frequencies = np.fft.fftfreq(spectrum_length,
                                           1 / self.sampling_rate)
-        self.frequencies = self.frequencies[: len(self.frequencies) // 2]
-        self.spectrum = self.spectrum[:,:spectrum_length// 2]
         self.frequency_resolution = self.frequencies[1] - self.frequencies[0]
-        self.info['units'] = "V**2"
+        self.info['units'] = "V"
         self.info['sfreq'] = self.sampling_rate
         self.info['frequency_resolution'] = self.frequency_resolution
         self.info['n_channels'] = self.signal.shape[0]
@@ -329,7 +327,7 @@ class Spectrum:
             AmplitudeSpectrum: The AmplitudeSpectrum object.
         """
         self.spectrum = np.abs(self.spectrum)
-        self.info['units'] = "V**2"
+        self.info['units'] = "V"
         return self
 
     def calculate_zscore(self) -> 'Spectrum':
@@ -402,10 +400,7 @@ class Spectrum:
             raise ValueError("The frequency of interest has to be set first.")
 
         baseline = self._get_baseline()
-        self.spectrum = np.divide(
-            self.spectrum,
-            baseline
-        )
+        self.spectrum = 20*np.log10(np.divide(self.spectrum, baseline))
         self.info['process_history'].append("Snr calculated")
         self.info['units'] = "dB"
         return self

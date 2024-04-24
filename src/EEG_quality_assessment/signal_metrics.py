@@ -36,8 +36,7 @@ import numpy as np
 # python -m conda install -c conda-forge scipy or python -m pip install scipy
 from numpy.lib.stride_tricks import sliding_window_view
 
-from EEG_quality_assessment import frequency_analysis, time_analysis
-
+import frequency_analysis, time_analysis
 
 # from EEG_quality_assessment import frequency_analysis, time_analysis
 #
@@ -49,12 +48,17 @@ class SignalMetrics:
         self.info = mne_object.info
 
     def calculate_frequency_metrics(self,
-                                    frequency_range:tuple = (17,20)) -> 'SignalMetrics':
+                                    frequency_range:tuple = (17,20),
+                                    frequency_type: str = 'noise') -> 'SignalMetrics':
         """Calculate the frequency metrics of the EEG signal.
 
         Args:
             frequency_range (tuple, optional): The range of the frequency
                 to look for the peak artifact. Defaults to (17,20).
+                
+            frequency_type (str, optional): The type of frequency to look for 
+                if it is a noise or an electrophysiological signal. 
+                Defaults to 'noise'.
 
         Returns:
             SignalMetrics:  The signal metrics object
@@ -66,7 +70,14 @@ class SignalMetrics:
             amplitude.get_peak_magnitude(frequency_range)
             amplitude._set_frequency_of_interest(amplitude.peak_frequency_Hz)
             zscore = amplitude.copy().calculate_zscore()
+            
+            if frequency_type.lower() == 'noise':
+                power = -1
+            elif frequency_type.lower() == 'signal':
+                power = 1
+                
             snr = amplitude.copy().calculate_snr()
+            np.power(snr.spectrum, power)
 
             for spectrum, name in zip([amplitude, zscore, snr],
                                     ['amplitude','zscore','snr']):
