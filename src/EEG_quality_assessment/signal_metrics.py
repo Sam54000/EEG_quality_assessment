@@ -28,15 +28,15 @@
 
 # third-party imports (and comments indicating how to install them)
 # python -m conda install -c conda-forge mne or python -m pip install mne
+import frequency_analysis
 import mne
 
 # python -m conda install -c conda-forge numpy or python -m pip install numpy
 import numpy as np
+import time_analysis
 
 # python -m conda install -c conda-forge scipy or python -m pip install scipy
 from numpy.lib.stride_tricks import sliding_window_view
-
-import frequency_analysis, time_analysis
 
 # from EEG_quality_assessment import frequency_analysis, time_analysis
 #
@@ -64,7 +64,17 @@ class SignalMetrics:
             SignalMetrics:  The signal metrics object
         """
         spectrum_object = frequency_analysis.Spectrum()
-        if isinstance(self.mne_object, mne.io.Raw | mne.io.eeglab.eeglab.RawEEGLAB):
+        #Here is a strange way to check the instance. But using isinstance
+        #within the 'if' statement makes everything crash because when it
+        #is not an eeglab raw instance, it throw an error saying
+        #that mne doesn't have eeglab attribute. They coded in a dynamic
+        #way that prevent me to use isinstance.
+        try:
+            type_raw = type(self.mne_object) == mne.io.eeglab.eeglab.RawEEGLAB
+        except:
+            type_raw = type(self.mne_object) == mne.io.Raw
+
+        if type_raw:
             spectrum_object.calculate_fft(self.mne_object)
             amplitude = spectrum_object.copy().calculate_amplitude()
             amplitude.get_peak_magnitude(frequency_range)
@@ -82,7 +92,8 @@ class SignalMetrics:
             for spectrum, name in zip([amplitude, zscore, snr],
                                     ['amplitude','zscore','snr']):
                 spectrum.get_peak_magnitude(frequency_range)
-                setattr(self, name, spectrum.peak_magnitude)
+                setattr(self, name, spectrum.spectrum)
+                setattr(self, name + '_peak_magnitude', spectrum.peak_magnitude)
                 setattr(self, name + '_peak_frequency', spectrum.peak_frequency_Hz)
         else:
             raise ValueError("Frequency analysis is only available for Raw object")
@@ -110,8 +121,11 @@ class SignalMetrics:
         """
         data = self.mne_object.get_data()
 
-        if isinstance(self.mne_object, mne.io.Raw | mne.io.eeglab.eeglab.RawEEGLAB):
-            print(type(self.mne_object))
+        try:
+            type_raw = type(self.mne_object) == mne.io.eeglab.eeglab.RawEEGLAB
+        except:
+            type_raw = type(self.mne_object) == mne.io.Raw
+        if type_raw:
             window_nb_samples = int((sliding_time_window*self.mne_object.info['sfreq']))
             step = int(window_nb_samples - window_nb_samples *overlap)
             window_view = sliding_window_view(data,

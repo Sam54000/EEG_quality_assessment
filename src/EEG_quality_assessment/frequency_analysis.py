@@ -76,6 +76,7 @@ import mne
 
 # python -m conda install -c conda-forge numpy or python -m pip install numpy
 import numpy as np
+import scipy
 
 
 class Spectrum:
@@ -95,9 +96,9 @@ class Spectrum:
         self.sampling_rate = raw.info["sfreq"]
         self.signal = raw.get_data()
         self._adjust_signal_length()
-        spectrum_length = np.shape(self.signal)[1]
-        self.spectrum = np.fft.rfft(self.signal) * 2 / spectrum_length
-        self.frequencies = np.fft.fftfreq(spectrum_length,
+        self.signal_length = np.shape(self.signal)[1]
+        self.spectrum = scipy.fft.rfft(self.signal) * 2 / self.signal_length
+        self.frequencies = scipy.fft.fftfreq(self.signal_length,
                                           1 / self.sampling_rate)
         self.frequency_resolution = self.frequencies[1] - self.frequencies[0]
         self.info['units'] = "V"
