@@ -69,12 +69,8 @@ class SignalMetrics:
         #is not an eeglab raw instance, it throw an error saying
         #that mne doesn't have eeglab attribute. They coded in a dynamic
         #way that prevent me to use isinstance.
-        try:
-            type_raw = type(self.mne_object) == mne.io.eeglab.eeglab.RawEEGLAB
-        except:
-            type_raw = type(self.mne_object) == mne.io.Raw
-
-        if type_raw:
+        raw_type = 'raw' in str(type(self.mne_object)).lower()
+        if raw_type:
             spectrum_object.calculate_fft(self.mne_object)
             amplitude = spectrum_object.copy().calculate_amplitude()
             amplitude.get_peak_magnitude(frequency_range)
@@ -121,11 +117,8 @@ class SignalMetrics:
         """
         data = self.mne_object.get_data()
 
-        try:
-            type_raw = type(self.mne_object) == mne.io.eeglab.eeglab.RawEEGLAB
-        except:
-            type_raw = type(self.mne_object) == mne.io.Raw
-        if type_raw:
+        raw_type = 'raw' in str(type(self.mne_object)).lower()
+        if raw_type:
             window_nb_samples = int((sliding_time_window*self.mne_object.info['sfreq']))
             step = int(window_nb_samples - window_nb_samples *overlap)
             window_view = sliding_window_view(data,
