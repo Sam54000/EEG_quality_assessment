@@ -49,6 +49,7 @@ exclude = [
   ".svn",
   ".tox",
   ".venv",
+  ".ipynb",
   "__pypackages__",
   "_build",
   "buck-out",
@@ -57,7 +58,7 @@ exclude = [
   "node_modules",
   "venv"
 ]
-line-length = 88
+line-length = 80
 indent-width = 4
 src = ["src"]
 target-version = "py311"
