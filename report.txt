@@ -1,0 +1,4066 @@
+2024-05-12 10:58:56,957 - numexpr.utils - INFO - Note: NumExpr detected 64 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2024-05-12 10:58:56,957 - numexpr.utils - INFO - NumExpr defaulting to 8 threads.
+/home/slouviot/miniconda3/envs/mne/lib/python3.12/site-packages/bids/layout/models.py:148: FutureWarning: The 'extension' entity currently excludes the leading dot ('.'). As of version 0.14.0, it will include the leading dot. To suppress this warning and include the leading dot, use `bids.config.set_option('extension_initial_dot', True)`.
+  warnings.warn("The 'extension' entity currently excludes the leading dot ('.'). "
+/home/slouviot/miniconda3/envs/mne/lib/python3.12/site-packages/bids/layout/models.py:222: UserWarning: Accessing entities as attributes is deprecated as of 0.7. Please use the .entities dictionary instead (i.e., .entities['task'] instead of .task.
+  warnings.warn("Accessing entities as attributes is deprecated as "
+Filtering raw data in 1 contiguous segment
+Setting up high-pass filter at 1 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal highpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    1.0s
+Used Annotations descriptions: ['R128']
+Creating RawArray with float64 data, n_channels=64, n_times=3112000
+    Range : 0 ... 3111999 =      0.000 ...   622.400 secs
+Ready.
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 50 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal bandpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Upper passband edge: 50.00 Hz
+- Upper transition bandwidth: 12.50 Hz (-6 dB cutoff frequency: 56.25 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.9s
+Not setting metadata
+622 matching events found
+No baseline correction applied
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done  71 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 161 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 287 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    0.1s
+Dropped 0/622 epochs
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg-Raw-0.000-622.400-PCA-01 (exp var=81.1%)
+Adding projection: eeg-Raw-0.000-622.400-PCA-02 (exp var=6.4%)
+2 projection items deactivated
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+SSP projectors applied...
+Including 2 SSP projectors from raw file
+Running ECG SSP computation
+Using channel ECG to identify heart beats.
+Setting up band-pass filter from 5 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hann window
+- Lower passband edge: 5.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 4.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+Number of ECG events detected : 581 (average pulse 56 / min.)
+Computing projector
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hamming window
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 0.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+Not setting metadata
+581 matching events found
+No baseline correction applied
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+Using data from preloaded Raw for 581 events and 151 original time points ...
+0 bad epochs dropped
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg--0.200-0.400-PCA-01 (exp var=49.7%)
+Adding projection: eeg--0.200-0.400-PCA-02 (exp var=28.9%)
+Done.
+4 projection items deactivated
+Overwriting existing file.
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-01/ses-01/eeg/sub-01_ses-01_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-01/ses-01/eeg/sub-01_ses-01_task-rest_run-01_eeg.fif
+[done]
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-01/ses-01/eeg/sub-01_ses-01_task-rest_run-01_eeg.json
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-01/ses-01/eeg/sub-01_ses-01_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-01/ses-01/eeg/sub-01_ses-01_task-rest_run-01_eeg.fif
+[done]
+/home/slouviot/miniconda3/envs/mne/lib/python3.12/site-packages/bids/layout/models.py:222: UserWarning: Accessing entities as attributes is deprecated as of 0.7. Please use the .entities dictionary instead (i.e., .entities['task'] instead of .task.
+  warnings.warn("Accessing entities as attributes is deprecated as "
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-01/ses-01/eeg/sub-01_ses-01_task-rest_run-01_eeg.json
+Filtering raw data in 1 contiguous segment
+Setting up high-pass filter at 1 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal highpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.9s
+Used Annotations descriptions: ['R128']
+Creating RawArray with float64 data, n_channels=64, n_times=3234600
+    Range : 0 ... 3234599 =      0.000 ...   646.920 secs
+Ready.
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 50 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal bandpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Upper passband edge: 50.00 Hz
+- Upper transition bandwidth: 12.50 Hz (-6 dB cutoff frequency: 56.25 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.9s
+Not setting metadata
+646 matching events found
+No baseline correction applied
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done  71 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 161 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 287 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    0.1s
+Dropped 0/646 epochs
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg-Raw-0.000-646.920-PCA-01 (exp var=74.6%)
+Adding projection: eeg-Raw-0.000-646.920-PCA-02 (exp var=14.8%)
+2 projection items deactivated
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+SSP projectors applied...
+Including 2 SSP projectors from raw file
+Running ECG SSP computation
+Using channel ECG to identify heart beats.
+Setting up band-pass filter from 5 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hann window
+- Lower passband edge: 5.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 4.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+Number of ECG events detected : 470 (average pulse 43 / min.)
+Computing projector
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hamming window
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 0.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+Not setting metadata
+470 matching events found
+No baseline correction applied
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+Using data from preloaded Raw for 470 events and 151 original time points ...
+0 bad epochs dropped
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg--0.200-0.400-PCA-01 (exp var=83.6%)
+Adding projection: eeg--0.200-0.400-PCA-02 (exp var=7.5%)
+Done.
+4 projection items deactivated
+Overwriting existing file.
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-02/ses-01/eeg/sub-02_ses-01_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-02/ses-01/eeg/sub-02_ses-01_task-rest_run-01_eeg.fif
+[done]
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-02/ses-01/eeg/sub-02_ses-01_task-rest_run-01_eeg.json
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-02/ses-01/eeg/sub-02_ses-01_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-02/ses-01/eeg/sub-02_ses-01_task-rest_run-01_eeg.fif
+[done]
+/home/slouviot/miniconda3/envs/mne/lib/python3.12/site-packages/bids/layout/models.py:222: UserWarning: Accessing entities as attributes is deprecated as of 0.7. Please use the .entities dictionary instead (i.e., .entities['task'] instead of .task.
+  warnings.warn("Accessing entities as attributes is deprecated as "
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-02/ses-01/eeg/sub-02_ses-01_task-rest_run-01_eeg.json
+Filtering raw data in 1 contiguous segment
+Setting up high-pass filter at 1 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal highpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.9s
+Used Annotations descriptions: ['R128']
+Creating RawArray with float64 data, n_channels=64, n_times=3418800
+    Range : 0 ... 3418799 =      0.000 ...   683.760 secs
+Ready.
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 50 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal bandpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Upper passband edge: 50.00 Hz
+- Upper transition bandwidth: 12.50 Hz (-6 dB cutoff frequency: 56.25 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    1.0s
+Not setting metadata
+683 matching events found
+No baseline correction applied
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done  71 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 161 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 287 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    0.1s
+[Parallel(n_jobs=1)]: Done 647 tasks      | elapsed:    0.1s
+Dropped 0/683 epochs
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg-Raw-0.000-683.760-PCA-01 (exp var=54.9%)
+Adding projection: eeg-Raw-0.000-683.760-PCA-02 (exp var=31.4%)
+2 projection items deactivated
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+SSP projectors applied...
+Including 2 SSP projectors from raw file
+Running ECG SSP computation
+Using channel ECG to identify heart beats.
+Setting up band-pass filter from 5 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hann window
+- Lower passband edge: 5.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 4.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+Number of ECG events detected : 818 (average pulse 71 / min.)
+Computing projector
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hamming window
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 0.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.1s
+Not setting metadata
+818 matching events found
+No baseline correction applied
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+Using data from preloaded Raw for 818 events and 151 original time points ...
+0 bad epochs dropped
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg--0.200-0.400-PCA-01 (exp var=87.5%)
+Adding projection: eeg--0.200-0.400-PCA-02 (exp var=7.1%)
+Done.
+4 projection items deactivated
+Overwriting existing file.
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-03/ses-01/eeg/sub-03_ses-01_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-03/ses-01/eeg/sub-03_ses-01_task-rest_run-01_eeg.fif
+[done]
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-03/ses-01/eeg/sub-03_ses-01_task-rest_run-01_eeg.json
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-03/ses-01/eeg/sub-03_ses-01_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-03/ses-01/eeg/sub-03_ses-01_task-rest_run-01_eeg.fif
+[done]
+/home/slouviot/miniconda3/envs/mne/lib/python3.12/site-packages/bids/layout/models.py:222: UserWarning: Accessing entities as attributes is deprecated as of 0.7. Please use the .entities dictionary instead (i.e., .entities['task'] instead of .task.
+  warnings.warn("Accessing entities as attributes is deprecated as "
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-03/ses-01/eeg/sub-03_ses-01_task-rest_run-01_eeg.json
+Filtering raw data in 1 contiguous segment
+Setting up high-pass filter at 1 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal highpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    1.0s
+Used Annotations descriptions: ['R128']
+Creating RawArray with float64 data, n_channels=64, n_times=3465600
+    Range : 0 ... 3465599 =      0.000 ...   693.120 secs
+Ready.
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 50 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal bandpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Upper passband edge: 50.00 Hz
+- Upper transition bandwidth: 12.50 Hz (-6 dB cutoff frequency: 56.25 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    1.1s
+Not setting metadata
+693 matching events found
+No baseline correction applied
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done  71 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 161 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 287 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    0.1s
+[Parallel(n_jobs=1)]: Done 647 tasks      | elapsed:    0.1s
+Dropped 0/693 epochs
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg-Raw-0.000-693.120-PCA-01 (exp var=69.7%)
+Adding projection: eeg-Raw-0.000-693.120-PCA-02 (exp var=19.1%)
+2 projection items deactivated
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+SSP projectors applied...
+Including 2 SSP projectors from raw file
+Running ECG SSP computation
+Using channel ECG to identify heart beats.
+Setting up band-pass filter from 5 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hann window
+- Lower passband edge: 5.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 4.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+Number of ECG events detected : 677 (average pulse 58 / min.)
+Computing projector
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hamming window
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 0.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.1s
+Not setting metadata
+677 matching events found
+No baseline correction applied
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+Using data from preloaded Raw for 677 events and 151 original time points ...
+1 bad epochs dropped
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg--0.200-0.400-PCA-01 (exp var=93.5%)
+Adding projection: eeg--0.200-0.400-PCA-02 (exp var=3.6%)
+Done.
+4 projection items deactivated
+Overwriting existing file.
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-04/ses-01/eeg/sub-04_ses-01_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-04/ses-01/eeg/sub-04_ses-01_task-rest_run-01_eeg.fif
+[done]
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-04/ses-01/eeg/sub-04_ses-01_task-rest_run-01_eeg.json
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-04/ses-01/eeg/sub-04_ses-01_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-04/ses-01/eeg/sub-04_ses-01_task-rest_run-01_eeg.fif
+[done]
+/home/slouviot/miniconda3/envs/mne/lib/python3.12/site-packages/bids/layout/models.py:222: UserWarning: Accessing entities as attributes is deprecated as of 0.7. Please use the .entities dictionary instead (i.e., .entities['task'] instead of .task.
+  warnings.warn("Accessing entities as attributes is deprecated as "
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-04/ses-01/eeg/sub-04_ses-01_task-rest_run-01_eeg.json
+Filtering raw data in 1 contiguous segment
+Setting up high-pass filter at 1 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal highpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    1.0s
+Used Annotations descriptions: ['R128']
+Creating RawArray with float64 data, n_channels=64, n_times=3480100
+    Range : 0 ... 3480099 =      0.000 ...   696.020 secs
+Ready.
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 50 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal bandpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Upper passband edge: 50.00 Hz
+- Upper transition bandwidth: 12.50 Hz (-6 dB cutoff frequency: 56.25 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    1.0s
+Not setting metadata
+696 matching events found
+No baseline correction applied
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done  71 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 161 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 287 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    0.1s
+[Parallel(n_jobs=1)]: Done 647 tasks      | elapsed:    0.1s
+Dropped 0/696 epochs
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg-Raw-0.000-696.020-PCA-01 (exp var=69.6%)
+Adding projection: eeg-Raw-0.000-696.020-PCA-02 (exp var=19.5%)
+2 projection items deactivated
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+SSP projectors applied...
+Including 2 SSP projectors from raw file
+Running ECG SSP computation
+Using channel ECG to identify heart beats.
+Setting up band-pass filter from 5 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hann window
+- Lower passband edge: 5.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 4.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+Number of ECG events detected : 744 (average pulse 64 / min.)
+Computing projector
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hamming window
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 0.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.1s
+Not setting metadata
+744 matching events found
+No baseline correction applied
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+Using data from preloaded Raw for 744 events and 151 original time points ...
+1 bad epochs dropped
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg--0.200-0.400-PCA-01 (exp var=89.5%)
+Adding projection: eeg--0.200-0.400-PCA-02 (exp var=3.7%)
+Done.
+4 projection items deactivated
+Overwriting existing file.
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-04/ses-02/eeg/sub-04_ses-02_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-04/ses-02/eeg/sub-04_ses-02_task-rest_run-01_eeg.fif
+[done]
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-04/ses-02/eeg/sub-04_ses-02_task-rest_run-01_eeg.json
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-04/ses-02/eeg/sub-04_ses-02_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-04/ses-02/eeg/sub-04_ses-02_task-rest_run-01_eeg.fif
+[done]
+/home/slouviot/miniconda3/envs/mne/lib/python3.12/site-packages/bids/layout/models.py:222: UserWarning: Accessing entities as attributes is deprecated as of 0.7. Please use the .entities dictionary instead (i.e., .entities['task'] instead of .task.
+  warnings.warn("Accessing entities as attributes is deprecated as "
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-04/ses-02/eeg/sub-04_ses-02_task-rest_run-01_eeg.json
+Filtering raw data in 1 contiguous segment
+Setting up high-pass filter at 1 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal highpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.9s
+Used Annotations descriptions: ['R128']
+Creating RawArray with float64 data, n_channels=64, n_times=3238300
+    Range : 0 ... 3238299 =      0.000 ...   647.660 secs
+Ready.
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 50 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal bandpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Upper passband edge: 50.00 Hz
+- Upper transition bandwidth: 12.50 Hz (-6 dB cutoff frequency: 56.25 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    1.0s
+Not setting metadata
+647 matching events found
+No baseline correction applied
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done  71 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 161 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 287 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    0.1s
+[Parallel(n_jobs=1)]: Done 647 tasks      | elapsed:    0.1s
+[Parallel(n_jobs=1)]: Done 647 tasks      | elapsed:    0.1s
+Dropped 0/647 epochs
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg-Raw-0.000-647.660-PCA-01 (exp var=55.0%)
+Adding projection: eeg-Raw-0.000-647.660-PCA-02 (exp var=26.4%)
+2 projection items deactivated
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+SSP projectors applied...
+Including 2 SSP projectors from raw file
+Running ECG SSP computation
+Using channel ECG to identify heart beats.
+Setting up band-pass filter from 5 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hann window
+- Lower passband edge: 5.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 4.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+Number of ECG events detected : 626 (average pulse 57 / min.)
+Computing projector
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hamming window
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 0.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+Not setting metadata
+626 matching events found
+No baseline correction applied
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+Using data from preloaded Raw for 626 events and 151 original time points ...
+1 bad epochs dropped
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg--0.200-0.400-PCA-01 (exp var=93.0%)
+Adding projection: eeg--0.200-0.400-PCA-02 (exp var=2.9%)
+Done.
+4 projection items deactivated
+Overwriting existing file.
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-05/ses-01/eeg/sub-05_ses-01_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-05/ses-01/eeg/sub-05_ses-01_task-rest_run-01_eeg.fif
+[done]
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-05/ses-01/eeg/sub-05_ses-01_task-rest_run-01_eeg.json
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-05/ses-01/eeg/sub-05_ses-01_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-05/ses-01/eeg/sub-05_ses-01_task-rest_run-01_eeg.fif
+[done]
+/home/slouviot/miniconda3/envs/mne/lib/python3.12/site-packages/bids/layout/models.py:222: UserWarning: Accessing entities as attributes is deprecated as of 0.7. Please use the .entities dictionary instead (i.e., .entities['task'] instead of .task.
+  warnings.warn("Accessing entities as attributes is deprecated as "
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-05/ses-01/eeg/sub-05_ses-01_task-rest_run-01_eeg.json
+Filtering raw data in 1 contiguous segment
+Setting up high-pass filter at 1 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal highpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.9s
+Used Annotations descriptions: ['R128']
+Creating RawArray with float64 data, n_channels=64, n_times=3227700
+    Range : 0 ... 3227699 =      0.000 ...   645.540 secs
+Ready.
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 50 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal bandpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Upper passband edge: 50.00 Hz
+- Upper transition bandwidth: 12.50 Hz (-6 dB cutoff frequency: 56.25 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.9s
+Not setting metadata
+645 matching events found
+No baseline correction applied
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done  71 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 161 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 287 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    0.1s
+Dropped 0/645 epochs
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg-Raw-0.000-645.540-PCA-01 (exp var=63.5%)
+Adding projection: eeg-Raw-0.000-645.540-PCA-02 (exp var=18.2%)
+2 projection items deactivated
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+SSP projectors applied...
+Including 2 SSP projectors from raw file
+Running ECG SSP computation
+Using channel ECG to identify heart beats.
+Setting up band-pass filter from 5 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hann window
+- Lower passband edge: 5.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 4.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+Number of ECG events detected : 712 (average pulse 66 / min.)
+Computing projector
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hamming window
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 0.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+Not setting metadata
+712 matching events found
+No baseline correction applied
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+Using data from preloaded Raw for 712 events and 151 original time points ...
+1 bad epochs dropped
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg--0.200-0.400-PCA-01 (exp var=71.0%)
+Adding projection: eeg--0.200-0.400-PCA-02 (exp var=21.7%)
+Done.
+4 projection items deactivated
+Overwriting existing file.
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-05/ses-02/eeg/sub-05_ses-02_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-05/ses-02/eeg/sub-05_ses-02_task-rest_run-01_eeg.fif
+[done]
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-05/ses-02/eeg/sub-05_ses-02_task-rest_run-01_eeg.json
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-05/ses-02/eeg/sub-05_ses-02_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-05/ses-02/eeg/sub-05_ses-02_task-rest_run-01_eeg.fif
+[done]
+/home/slouviot/miniconda3/envs/mne/lib/python3.12/site-packages/bids/layout/models.py:222: UserWarning: Accessing entities as attributes is deprecated as of 0.7. Please use the .entities dictionary instead (i.e., .entities['task'] instead of .task.
+  warnings.warn("Accessing entities as attributes is deprecated as "
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-05/ses-02/eeg/sub-05_ses-02_task-rest_run-01_eeg.json
+Filtering raw data in 1 contiguous segment
+Setting up high-pass filter at 1 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal highpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.9s
+Used Annotations descriptions: ['R128']
+Creating RawArray with float64 data, n_channels=64, n_times=3134100
+    Range : 0 ... 3134099 =      0.000 ...   626.820 secs
+Ready.
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 50 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal bandpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Upper passband edge: 50.00 Hz
+- Upper transition bandwidth: 12.50 Hz (-6 dB cutoff frequency: 56.25 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.9s
+Not setting metadata
+626 matching events found
+No baseline correction applied
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done  71 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 161 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 287 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    0.1s
+Dropped 0/626 epochs
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg-Raw-0.000-626.820-PCA-01 (exp var=76.9%)
+Adding projection: eeg-Raw-0.000-626.820-PCA-02 (exp var=11.3%)
+2 projection items deactivated
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+SSP projectors applied...
+Including 2 SSP projectors from raw file
+Running ECG SSP computation
+Using channel ECG to identify heart beats.
+Setting up band-pass filter from 5 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hann window
+- Lower passband edge: 5.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 4.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+Number of ECG events detected : 569 (average pulse 54 / min.)
+Computing projector
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hamming window
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 0.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+Not setting metadata
+569 matching events found
+No baseline correction applied
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+Using data from preloaded Raw for 569 events and 151 original time points ...
+0 bad epochs dropped
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg--0.200-0.400-PCA-01 (exp var=78.5%)
+Adding projection: eeg--0.200-0.400-PCA-02 (exp var=11.2%)
+Done.
+4 projection items deactivated
+Overwriting existing file.
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-06/ses-01/eeg/sub-06_ses-01_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-06/ses-01/eeg/sub-06_ses-01_task-rest_run-01_eeg.fif
+[done]
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-06/ses-01/eeg/sub-06_ses-01_task-rest_run-01_eeg.json
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-06/ses-01/eeg/sub-06_ses-01_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-06/ses-01/eeg/sub-06_ses-01_task-rest_run-01_eeg.fif
+[done]
+/home/slouviot/miniconda3/envs/mne/lib/python3.12/site-packages/bids/layout/models.py:222: UserWarning: Accessing entities as attributes is deprecated as of 0.7. Please use the .entities dictionary instead (i.e., .entities['task'] instead of .task.
+  warnings.warn("Accessing entities as attributes is deprecated as "
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-06/ses-01/eeg/sub-06_ses-01_task-rest_run-01_eeg.json
+Filtering raw data in 1 contiguous segment
+Setting up high-pass filter at 1 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal highpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.9s
+Used Annotations descriptions: ['R128']
+Creating RawArray with float64 data, n_channels=64, n_times=3216500
+    Range : 0 ... 3216499 =      0.000 ...   643.300 secs
+Ready.
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 50 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal bandpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Upper passband edge: 50.00 Hz
+- Upper transition bandwidth: 12.50 Hz (-6 dB cutoff frequency: 56.25 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.9s
+Not setting metadata
+643 matching events found
+No baseline correction applied
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done  71 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 161 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 287 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    0.1s
+Dropped 0/643 epochs
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg-Raw-0.000-643.300-PCA-01 (exp var=79.3%)
+Adding projection: eeg-Raw-0.000-643.300-PCA-02 (exp var=7.6%)
+2 projection items deactivated
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+SSP projectors applied...
+Including 2 SSP projectors from raw file
+Running ECG SSP computation
+Using channel ECG to identify heart beats.
+Setting up band-pass filter from 5 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hann window
+- Lower passband edge: 5.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 4.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+Number of ECG events detected : 566 (average pulse 52 / min.)
+Computing projector
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hamming window
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 0.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+Not setting metadata
+566 matching events found
+No baseline correction applied
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+Using data from preloaded Raw for 566 events and 151 original time points ...
+0 bad epochs dropped
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg--0.200-0.400-PCA-01 (exp var=81.1%)
+Adding projection: eeg--0.200-0.400-PCA-02 (exp var=14.0%)
+Done.
+4 projection items deactivated
+Overwriting existing file.
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-06/ses-02/eeg/sub-06_ses-02_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-06/ses-02/eeg/sub-06_ses-02_task-rest_run-01_eeg.fif
+[done]
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-06/ses-02/eeg/sub-06_ses-02_task-rest_run-01_eeg.json
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-06/ses-02/eeg/sub-06_ses-02_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-06/ses-02/eeg/sub-06_ses-02_task-rest_run-01_eeg.fif
+[done]
+/home/slouviot/miniconda3/envs/mne/lib/python3.12/site-packages/bids/layout/models.py:222: UserWarning: Accessing entities as attributes is deprecated as of 0.7. Please use the .entities dictionary instead (i.e., .entities['task'] instead of .task.
+  warnings.warn("Accessing entities as attributes is deprecated as "
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-06/ses-02/eeg/sub-06_ses-02_task-rest_run-01_eeg.json
+Filtering raw data in 1 contiguous segment
+Setting up high-pass filter at 1 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal highpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    1.4s
+Used Annotations descriptions: ['R128']
+Creating RawArray with float64 data, n_channels=64, n_times=4724500
+    Range : 0 ... 4724499 =      0.000 ...   944.900 secs
+Ready.
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 50 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal bandpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Upper passband edge: 50.00 Hz
+- Upper transition bandwidth: 12.50 Hz (-6 dB cutoff frequency: 56.25 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    1.7s
+Not setting metadata
+944 matching events found
+No baseline correction applied
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done  71 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 161 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 287 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    0.1s
+[Parallel(n_jobs=1)]: Done 647 tasks      | elapsed:    0.1s
+[Parallel(n_jobs=1)]: Done 881 tasks      | elapsed:    0.1s
+Dropped 0/944 epochs
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg-Raw-0.000-944.900-PCA-01 (exp var=71.3%)
+Adding projection: eeg-Raw-0.000-944.900-PCA-02 (exp var=15.5%)
+2 projection items deactivated
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+SSP projectors applied...
+Including 2 SSP projectors from raw file
+Running ECG SSP computation
+Using channel ECG to identify heart beats.
+Setting up band-pass filter from 5 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hann window
+- Lower passband edge: 5.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 4.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+Number of ECG events detected : 1013 (average pulse 64 / min.)
+Computing projector
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hamming window
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 0.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.1s
+Not setting metadata
+1013 matching events found
+No baseline correction applied
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+Using data from preloaded Raw for 1013 events and 151 original time points ...
+0 bad epochs dropped
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg--0.200-0.400-PCA-01 (exp var=70.0%)
+Adding projection: eeg--0.200-0.400-PCA-02 (exp var=12.6%)
+Done.
+4 projection items deactivated
+Overwriting existing file.
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-07/ses-01/eeg/sub-07_ses-01_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-07/ses-01/eeg/sub-07_ses-01_task-rest_run-01_eeg.fif
+[done]
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-07/ses-01/eeg/sub-07_ses-01_task-rest_run-01_eeg.json
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-07/ses-01/eeg/sub-07_ses-01_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-07/ses-01/eeg/sub-07_ses-01_task-rest_run-01_eeg.fif
+[done]
+/home/slouviot/miniconda3/envs/mne/lib/python3.12/site-packages/bids/layout/models.py:222: UserWarning: Accessing entities as attributes is deprecated as of 0.7. Please use the .entities dictionary instead (i.e., .entities['task'] instead of .task.
+  warnings.warn("Accessing entities as attributes is deprecated as "
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-07/ses-01/eeg/sub-07_ses-01_task-rest_run-01_eeg.json
+Filtering raw data in 1 contiguous segment
+Setting up high-pass filter at 1 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal highpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.9s
+Used Annotations descriptions: ['R128']
+Creating RawArray with float64 data, n_channels=64, n_times=3238600
+    Range : 0 ... 3238599 =      0.000 ...   647.720 secs
+Ready.
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 50 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal bandpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Upper passband edge: 50.00 Hz
+- Upper transition bandwidth: 12.50 Hz (-6 dB cutoff frequency: 56.25 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.9s
+Not setting metadata
+647 matching events found
+No baseline correction applied
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done  71 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 161 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 287 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    0.1s
+[Parallel(n_jobs=1)]: Done 647 tasks      | elapsed:    0.1s
+[Parallel(n_jobs=1)]: Done 647 tasks      | elapsed:    0.1s
+Dropped 0/647 epochs
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg-Raw-0.000-647.720-PCA-01 (exp var=54.7%)
+Adding projection: eeg-Raw-0.000-647.720-PCA-02 (exp var=27.2%)
+2 projection items deactivated
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+SSP projectors applied...
+Including 2 SSP projectors from raw file
+Running ECG SSP computation
+Using channel ECG to identify heart beats.
+Setting up band-pass filter from 5 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hann window
+- Lower passband edge: 5.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 4.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+Number of ECG events detected : 754 (average pulse 69 / min.)
+Computing projector
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hamming window
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 0.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+Not setting metadata
+754 matching events found
+No baseline correction applied
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+Using data from preloaded Raw for 754 events and 151 original time points ...
+1 bad epochs dropped
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg--0.200-0.400-PCA-01 (exp var=75.6%)
+Adding projection: eeg--0.200-0.400-PCA-02 (exp var=11.8%)
+Done.
+4 projection items deactivated
+Overwriting existing file.
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-07/ses-02/eeg/sub-07_ses-02_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-07/ses-02/eeg/sub-07_ses-02_task-rest_run-01_eeg.fif
+[done]
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-07/ses-02/eeg/sub-07_ses-02_task-rest_run-01_eeg.json
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-07/ses-02/eeg/sub-07_ses-02_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-07/ses-02/eeg/sub-07_ses-02_task-rest_run-01_eeg.fif
+[done]
+/home/slouviot/miniconda3/envs/mne/lib/python3.12/site-packages/bids/layout/models.py:222: UserWarning: Accessing entities as attributes is deprecated as of 0.7. Please use the .entities dictionary instead (i.e., .entities['task'] instead of .task.
+  warnings.warn("Accessing entities as attributes is deprecated as "
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-07/ses-02/eeg/sub-07_ses-02_task-rest_run-01_eeg.json
+Filtering raw data in 1 contiguous segment
+Setting up high-pass filter at 1 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal highpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.9s
+Used Annotations descriptions: ['R128']
+Creating RawArray with float64 data, n_channels=64, n_times=3315400
+    Range : 0 ... 3315399 =      0.000 ...   663.080 secs
+Ready.
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 50 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal bandpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Upper passband edge: 50.00 Hz
+- Upper transition bandwidth: 12.50 Hz (-6 dB cutoff frequency: 56.25 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    1.0s
+Not setting metadata
+663 matching events found
+No baseline correction applied
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done  71 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 161 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 287 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    0.1s
+[Parallel(n_jobs=1)]: Done 647 tasks      | elapsed:    0.1s
+Dropped 0/663 epochs
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg-Raw-0.000-663.080-PCA-01 (exp var=75.4%)
+Adding projection: eeg-Raw-0.000-663.080-PCA-02 (exp var=11.2%)
+2 projection items deactivated
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+SSP projectors applied...
+Including 2 SSP projectors from raw file
+Running ECG SSP computation
+Using channel ECG to identify heart beats.
+Setting up band-pass filter from 5 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hann window
+- Lower passband edge: 5.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 4.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+Number of ECG events detected : 693 (average pulse 62 / min.)
+Computing projector
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hamming window
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 0.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.1s
+Not setting metadata
+693 matching events found
+No baseline correction applied
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+Using data from preloaded Raw for 693 events and 151 original time points ...
+0 bad epochs dropped
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg--0.200-0.400-PCA-01 (exp var=76.3%)
+Adding projection: eeg--0.200-0.400-PCA-02 (exp var=15.7%)
+Done.
+4 projection items deactivated
+Overwriting existing file.
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-08/ses-01/eeg/sub-08_ses-01_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-08/ses-01/eeg/sub-08_ses-01_task-rest_run-01_eeg.fif
+[done]
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-08/ses-01/eeg/sub-08_ses-01_task-rest_run-01_eeg.json
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-08/ses-01/eeg/sub-08_ses-01_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-08/ses-01/eeg/sub-08_ses-01_task-rest_run-01_eeg.fif
+[done]
+/home/slouviot/miniconda3/envs/mne/lib/python3.12/site-packages/bids/layout/models.py:222: UserWarning: Accessing entities as attributes is deprecated as of 0.7. Please use the .entities dictionary instead (i.e., .entities['task'] instead of .task.
+  warnings.warn("Accessing entities as attributes is deprecated as "
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-08/ses-01/eeg/sub-08_ses-01_task-rest_run-01_eeg.json
+Filtering raw data in 1 contiguous segment
+Setting up high-pass filter at 1 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal highpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.9s
+Used Annotations descriptions: ['R128']
+Creating RawArray with float64 data, n_channels=64, n_times=3187500
+    Range : 0 ... 3187499 =      0.000 ...   637.500 secs
+Ready.
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 50 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal bandpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Upper passband edge: 50.00 Hz
+- Upper transition bandwidth: 12.50 Hz (-6 dB cutoff frequency: 56.25 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.9s
+Not setting metadata
+637 matching events found
+No baseline correction applied
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done  71 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 161 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 287 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    0.1s
+Dropped 0/637 epochs
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg-Raw-0.000-637.500-PCA-01 (exp var=78.0%)
+Adding projection: eeg-Raw-0.000-637.500-PCA-02 (exp var=12.5%)
+2 projection items deactivated
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+SSP projectors applied...
+Including 2 SSP projectors from raw file
+Running ECG SSP computation
+Using channel ECG to identify heart beats.
+Setting up band-pass filter from 5 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hann window
+- Lower passband edge: 5.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 4.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+Number of ECG events detected : 688 (average pulse 64 / min.)
+Computing projector
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hamming window
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 0.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+Not setting metadata
+688 matching events found
+No baseline correction applied
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+Using data from preloaded Raw for 688 events and 151 original time points ...
+0 bad epochs dropped
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg--0.200-0.400-PCA-01 (exp var=78.2%)
+Adding projection: eeg--0.200-0.400-PCA-02 (exp var=11.5%)
+Done.
+4 projection items deactivated
+Overwriting existing file.
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-08/ses-02/eeg/sub-08_ses-02_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-08/ses-02/eeg/sub-08_ses-02_task-rest_run-01_eeg.fif
+[done]
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-08/ses-02/eeg/sub-08_ses-02_task-rest_run-01_eeg.json
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-08/ses-02/eeg/sub-08_ses-02_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-08/ses-02/eeg/sub-08_ses-02_task-rest_run-01_eeg.fif
+[done]
+/home/slouviot/miniconda3/envs/mne/lib/python3.12/site-packages/bids/layout/models.py:222: UserWarning: Accessing entities as attributes is deprecated as of 0.7. Please use the .entities dictionary instead (i.e., .entities['task'] instead of .task.
+  warnings.warn("Accessing entities as attributes is deprecated as "
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-08/ses-02/eeg/sub-08_ses-02_task-rest_run-01_eeg.json
+Filtering raw data in 1 contiguous segment
+Setting up high-pass filter at 1 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal highpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.9s
+Used Annotations descriptions: ['R128']
+Creating RawArray with float64 data, n_channels=64, n_times=3228000
+    Range : 0 ... 3227999 =      0.000 ...   645.600 secs
+Ready.
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 50 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal bandpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Upper passband edge: 50.00 Hz
+- Upper transition bandwidth: 12.50 Hz (-6 dB cutoff frequency: 56.25 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    1.2s
+Not setting metadata
+645 matching events found
+No baseline correction applied
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done  71 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 161 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 287 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    0.1s
+Dropped 0/645 epochs
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg-Raw-0.000-645.600-PCA-01 (exp var=71.5%)
+Adding projection: eeg-Raw-0.000-645.600-PCA-02 (exp var=18.6%)
+2 projection items deactivated
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+SSP projectors applied...
+Including 2 SSP projectors from raw file
+Running ECG SSP computation
+Using channel ECG to identify heart beats.
+Setting up band-pass filter from 5 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hann window
+- Lower passband edge: 5.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 4.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+Number of ECG events detected : 634 (average pulse 58 / min.)
+Computing projector
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hamming window
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 0.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.1s
+Not setting metadata
+634 matching events found
+No baseline correction applied
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+Using data from preloaded Raw for 634 events and 151 original time points ...
+1 bad epochs dropped
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg--0.200-0.400-PCA-01 (exp var=72.5%)
+Adding projection: eeg--0.200-0.400-PCA-02 (exp var=20.4%)
+Done.
+4 projection items deactivated
+Overwriting existing file.
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-09/ses-01/eeg/sub-09_ses-01_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-09/ses-01/eeg/sub-09_ses-01_task-rest_run-01_eeg.fif
+[done]
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-09/ses-01/eeg/sub-09_ses-01_task-rest_run-01_eeg.json
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-09/ses-01/eeg/sub-09_ses-01_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-09/ses-01/eeg/sub-09_ses-01_task-rest_run-01_eeg.fif
+[done]
+/home/slouviot/miniconda3/envs/mne/lib/python3.12/site-packages/bids/layout/models.py:222: UserWarning: Accessing entities as attributes is deprecated as of 0.7. Please use the .entities dictionary instead (i.e., .entities['task'] instead of .task.
+  warnings.warn("Accessing entities as attributes is deprecated as "
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-09/ses-01/eeg/sub-09_ses-01_task-rest_run-01_eeg.json
+Filtering raw data in 1 contiguous segment
+Setting up high-pass filter at 1 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal highpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    1.0s
+Used Annotations descriptions: ['R128']
+Creating RawArray with float64 data, n_channels=64, n_times=3244800
+    Range : 0 ... 3244799 =      0.000 ...   648.960 secs
+Ready.
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 50 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal bandpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Upper passband edge: 50.00 Hz
+- Upper transition bandwidth: 12.50 Hz (-6 dB cutoff frequency: 56.25 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    1.0s
+Not setting metadata
+648 matching events found
+No baseline correction applied
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done  71 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 161 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 287 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    0.1s
+[Parallel(n_jobs=1)]: Done 647 tasks      | elapsed:    0.1s
+Dropped 0/648 epochs
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg-Raw-0.000-648.960-PCA-01 (exp var=57.8%)
+Adding projection: eeg-Raw-0.000-648.960-PCA-02 (exp var=24.7%)
+2 projection items deactivated
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+SSP projectors applied...
+Including 2 SSP projectors from raw file
+Running ECG SSP computation
+Using channel ECG to identify heart beats.
+Setting up band-pass filter from 5 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hann window
+- Lower passband edge: 5.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 4.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+Number of ECG events detected : 710 (average pulse 65 / min.)
+Computing projector
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hamming window
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 0.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+Not setting metadata
+710 matching events found
+No baseline correction applied
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+Using data from preloaded Raw for 710 events and 151 original time points ...
+0 bad epochs dropped
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg--0.200-0.400-PCA-01 (exp var=65.8%)
+Adding projection: eeg--0.200-0.400-PCA-02 (exp var=28.2%)
+Done.
+4 projection items deactivated
+Overwriting existing file.
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-10/ses-01/eeg/sub-10_ses-01_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-10/ses-01/eeg/sub-10_ses-01_task-rest_run-01_eeg.fif
+[done]
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-10/ses-01/eeg/sub-10_ses-01_task-rest_run-01_eeg.json
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-10/ses-01/eeg/sub-10_ses-01_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-10/ses-01/eeg/sub-10_ses-01_task-rest_run-01_eeg.fif
+[done]
+/home/slouviot/miniconda3/envs/mne/lib/python3.12/site-packages/bids/layout/models.py:222: UserWarning: Accessing entities as attributes is deprecated as of 0.7. Please use the .entities dictionary instead (i.e., .entities['task'] instead of .task.
+  warnings.warn("Accessing entities as attributes is deprecated as "
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-10/ses-01/eeg/sub-10_ses-01_task-rest_run-01_eeg.json
+Filtering raw data in 1 contiguous segment
+Setting up high-pass filter at 1 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal highpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.9s
+Used Annotations descriptions: ['R128']
+Creating RawArray with float64 data, n_channels=64, n_times=3190600
+    Range : 0 ... 3190599 =      0.000 ...   638.120 secs
+Ready.
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 50 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal bandpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Upper passband edge: 50.00 Hz
+- Upper transition bandwidth: 12.50 Hz (-6 dB cutoff frequency: 56.25 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.9s
+Not setting metadata
+638 matching events found
+No baseline correction applied
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done  71 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 161 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 287 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    0.1s
+Dropped 0/638 epochs
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg-Raw-0.000-638.120-PCA-01 (exp var=63.9%)
+Adding projection: eeg-Raw-0.000-638.120-PCA-02 (exp var=18.5%)
+2 projection items deactivated
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+SSP projectors applied...
+Including 2 SSP projectors from raw file
+Running ECG SSP computation
+Using channel ECG to identify heart beats.
+Setting up band-pass filter from 5 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hann window
+- Lower passband edge: 5.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 4.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+Number of ECG events detected : 664 (average pulse 62 / min.)
+Computing projector
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hamming window
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 0.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+Not setting metadata
+664 matching events found
+No baseline correction applied
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+Using data from preloaded Raw for 664 events and 151 original time points ...
+1 bad epochs dropped
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg--0.200-0.400-PCA-01 (exp var=76.4%)
+Adding projection: eeg--0.200-0.400-PCA-02 (exp var=14.3%)
+Done.
+4 projection items deactivated
+Overwriting existing file.
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-10/ses-02/eeg/sub-10_ses-02_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-10/ses-02/eeg/sub-10_ses-02_task-rest_run-01_eeg.fif
+[done]
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-10/ses-02/eeg/sub-10_ses-02_task-rest_run-01_eeg.json
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-10/ses-02/eeg/sub-10_ses-02_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-10/ses-02/eeg/sub-10_ses-02_task-rest_run-01_eeg.fif
+[done]
+/home/slouviot/miniconda3/envs/mne/lib/python3.12/site-packages/bids/layout/models.py:222: UserWarning: Accessing entities as attributes is deprecated as of 0.7. Please use the .entities dictionary instead (i.e., .entities['task'] instead of .task.
+  warnings.warn("Accessing entities as attributes is deprecated as "
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-10/ses-02/eeg/sub-10_ses-02_task-rest_run-01_eeg.json
+Filtering raw data in 1 contiguous segment
+Setting up high-pass filter at 1 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal highpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.9s
+Used Annotations descriptions: ['R128']
+Creating RawArray with float64 data, n_channels=64, n_times=3208100
+    Range : 0 ... 3208099 =      0.000 ...   641.620 secs
+Ready.
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 50 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal bandpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Upper passband edge: 50.00 Hz
+- Upper transition bandwidth: 12.50 Hz (-6 dB cutoff frequency: 56.25 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.9s
+Not setting metadata
+641 matching events found
+No baseline correction applied
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done  71 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 161 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 287 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    0.1s
+Dropped 0/641 epochs
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg-Raw-0.000-641.620-PCA-01 (exp var=64.5%)
+Adding projection: eeg-Raw-0.000-641.620-PCA-02 (exp var=21.0%)
+2 projection items deactivated
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+SSP projectors applied...
+Including 2 SSP projectors from raw file
+Running ECG SSP computation
+Using channel ECG to identify heart beats.
+Setting up band-pass filter from 5 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hann window
+- Lower passband edge: 5.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 4.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+Number of ECG events detected : 835 (average pulse 78 / min.)
+Computing projector
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hamming window
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 0.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+Not setting metadata
+835 matching events found
+No baseline correction applied
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+Using data from preloaded Raw for 835 events and 151 original time points ...
+0 bad epochs dropped
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg--0.200-0.400-PCA-01 (exp var=76.7%)
+Adding projection: eeg--0.200-0.400-PCA-02 (exp var=11.6%)
+Done.
+4 projection items deactivated
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-11/ses-01/eeg/sub-11_ses-01_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-11/ses-01/eeg/sub-11_ses-01_task-rest_run-01_eeg.fif
+[done]
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-11/ses-01/eeg/sub-11_ses-01_task-rest_run-01_eeg.json
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-11/ses-01/eeg/sub-11_ses-01_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-11/ses-01/eeg/sub-11_ses-01_task-rest_run-01_eeg.fif
+[done]
+/home/slouviot/miniconda3/envs/mne/lib/python3.12/site-packages/bids/layout/models.py:222: UserWarning: Accessing entities as attributes is deprecated as of 0.7. Please use the .entities dictionary instead (i.e., .entities['task'] instead of .task.
+  warnings.warn("Accessing entities as attributes is deprecated as "
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-11/ses-01/eeg/sub-11_ses-01_task-rest_run-01_eeg.json
+Filtering raw data in 1 contiguous segment
+Setting up high-pass filter at 1 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal highpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.9s
+Used Annotations descriptions: ['R128']
+Creating RawArray with float64 data, n_channels=64, n_times=3265600
+    Range : 0 ... 3265599 =      0.000 ...   653.120 secs
+Ready.
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 50 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal bandpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Upper passband edge: 50.00 Hz
+- Upper transition bandwidth: 12.50 Hz (-6 dB cutoff frequency: 56.25 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    1.1s
+Not setting metadata
+653 matching events found
+No baseline correction applied
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done  71 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 161 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 287 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    0.1s
+[Parallel(n_jobs=1)]: Done 647 tasks      | elapsed:    0.1s
+Dropped 0/653 epochs
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg-Raw-0.000-653.120-PCA-01 (exp var=71.2%)
+Adding projection: eeg-Raw-0.000-653.120-PCA-02 (exp var=13.0%)
+2 projection items deactivated
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+SSP projectors applied...
+Including 2 SSP projectors from raw file
+Running ECG SSP computation
+Using channel ECG to identify heart beats.
+Setting up band-pass filter from 5 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hann window
+- Lower passband edge: 5.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 4.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+Number of ECG events detected : 766 (average pulse 70 / min.)
+Computing projector
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hamming window
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 0.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+Not setting metadata
+766 matching events found
+No baseline correction applied
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+Using data from preloaded Raw for 766 events and 151 original time points ...
+0 bad epochs dropped
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg--0.200-0.400-PCA-01 (exp var=72.5%)
+Adding projection: eeg--0.200-0.400-PCA-02 (exp var=15.2%)
+Done.
+4 projection items deactivated
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-11/ses-02/eeg/sub-11_ses-02_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-11/ses-02/eeg/sub-11_ses-02_task-rest_run-01_eeg.fif
+[done]
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-11/ses-02/eeg/sub-11_ses-02_task-rest_run-01_eeg.json
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-11/ses-02/eeg/sub-11_ses-02_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-11/ses-02/eeg/sub-11_ses-02_task-rest_run-01_eeg.fif
+[done]
+/home/slouviot/miniconda3/envs/mne/lib/python3.12/site-packages/bids/layout/models.py:222: UserWarning: Accessing entities as attributes is deprecated as of 0.7. Please use the .entities dictionary instead (i.e., .entities['task'] instead of .task.
+  warnings.warn("Accessing entities as attributes is deprecated as "
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-11/ses-02/eeg/sub-11_ses-02_task-rest_run-01_eeg.json
+Filtering raw data in 1 contiguous segment
+Setting up high-pass filter at 1 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal highpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.9s
+Used Annotations descriptions: ['R128']
+Creating RawArray with float64 data, n_channels=64, n_times=3116900
+    Range : 0 ... 3116899 =      0.000 ...   623.380 secs
+Ready.
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 50 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal bandpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Upper passband edge: 50.00 Hz
+- Upper transition bandwidth: 12.50 Hz (-6 dB cutoff frequency: 56.25 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    1.1s
+Not setting metadata
+623 matching events found
+No baseline correction applied
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done  71 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 161 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 287 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    0.1s
+Dropped 0/623 epochs
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg-Raw-0.000-623.380-PCA-01 (exp var=70.8%)
+Adding projection: eeg-Raw-0.000-623.380-PCA-02 (exp var=14.5%)
+2 projection items deactivated
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+SSP projectors applied...
+Including 2 SSP projectors from raw file
+Running ECG SSP computation
+Using channel ECG to identify heart beats.
+Setting up band-pass filter from 5 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hann window
+- Lower passband edge: 5.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 4.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+Number of ECG events detected : 628 (average pulse 60 / min.)
+Computing projector
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hamming window
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 0.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+Not setting metadata
+628 matching events found
+No baseline correction applied
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+Using data from preloaded Raw for 628 events and 151 original time points ...
+1 bad epochs dropped
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg--0.200-0.400-PCA-01 (exp var=79.5%)
+Adding projection: eeg--0.200-0.400-PCA-02 (exp var=13.6%)
+Done.
+4 projection items deactivated
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-12/ses-01/eeg/sub-12_ses-01_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-12/ses-01/eeg/sub-12_ses-01_task-rest_run-01_eeg.fif
+[done]
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-12/ses-01/eeg/sub-12_ses-01_task-rest_run-01_eeg.json
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-12/ses-01/eeg/sub-12_ses-01_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-12/ses-01/eeg/sub-12_ses-01_task-rest_run-01_eeg.fif
+[done]
+/home/slouviot/miniconda3/envs/mne/lib/python3.12/site-packages/bids/layout/models.py:222: UserWarning: Accessing entities as attributes is deprecated as of 0.7. Please use the .entities dictionary instead (i.e., .entities['task'] instead of .task.
+  warnings.warn("Accessing entities as attributes is deprecated as "
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-12/ses-01/eeg/sub-12_ses-01_task-rest_run-01_eeg.json
+Filtering raw data in 1 contiguous segment
+Setting up high-pass filter at 1 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal highpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.9s
+Used Annotations descriptions: ['R128']
+Creating RawArray with float64 data, n_channels=64, n_times=3116100
+    Range : 0 ... 3116099 =      0.000 ...   623.220 secs
+Ready.
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 50 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal bandpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Upper passband edge: 50.00 Hz
+- Upper transition bandwidth: 12.50 Hz (-6 dB cutoff frequency: 56.25 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    1.0s
+Not setting metadata
+623 matching events found
+No baseline correction applied
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done  71 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 161 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 287 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    0.1s
+Dropped 0/623 epochs
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg-Raw-0.000-623.220-PCA-01 (exp var=58.2%)
+Adding projection: eeg-Raw-0.000-623.220-PCA-02 (exp var=16.7%)
+2 projection items deactivated
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+SSP projectors applied...
+Including 2 SSP projectors from raw file
+Running ECG SSP computation
+Using channel ECG to identify heart beats.
+Setting up band-pass filter from 5 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hann window
+- Lower passband edge: 5.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 4.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+Number of ECG events detected : 806 (average pulse 77 / min.)
+Computing projector
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hamming window
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 0.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+Not setting metadata
+806 matching events found
+No baseline correction applied
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+Using data from preloaded Raw for 806 events and 151 original time points ...
+1 bad epochs dropped
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg--0.200-0.400-PCA-01 (exp var=82.0%)
+Adding projection: eeg--0.200-0.400-PCA-02 (exp var=10.6%)
+Done.
+4 projection items deactivated
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-12/ses-02/eeg/sub-12_ses-02_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-12/ses-02/eeg/sub-12_ses-02_task-rest_run-01_eeg.fif
+[done]
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-12/ses-02/eeg/sub-12_ses-02_task-rest_run-01_eeg.json
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-12/ses-02/eeg/sub-12_ses-02_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-12/ses-02/eeg/sub-12_ses-02_task-rest_run-01_eeg.fif
+[done]
+/home/slouviot/miniconda3/envs/mne/lib/python3.12/site-packages/bids/layout/models.py:222: UserWarning: Accessing entities as attributes is deprecated as of 0.7. Please use the .entities dictionary instead (i.e., .entities['task'] instead of .task.
+  warnings.warn("Accessing entities as attributes is deprecated as "
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-12/ses-02/eeg/sub-12_ses-02_task-rest_run-01_eeg.json
+Filtering raw data in 1 contiguous segment
+Setting up high-pass filter at 1 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal highpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.9s
+Used Annotations descriptions: ['R128']
+Creating RawArray with float64 data, n_channels=64, n_times=3192400
+    Range : 0 ... 3192399 =      0.000 ...   638.480 secs
+Ready.
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 50 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal bandpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Upper passband edge: 50.00 Hz
+- Upper transition bandwidth: 12.50 Hz (-6 dB cutoff frequency: 56.25 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.9s
+Not setting metadata
+638 matching events found
+No baseline correction applied
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done  71 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 161 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 287 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    0.1s
+Dropped 0/638 epochs
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg-Raw-0.000-638.480-PCA-01 (exp var=72.7%)
+Adding projection: eeg-Raw-0.000-638.480-PCA-02 (exp var=13.5%)
+2 projection items deactivated
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+SSP projectors applied...
+Including 2 SSP projectors from raw file
+Running ECG SSP computation
+Using channel ECG to identify heart beats.
+Setting up band-pass filter from 5 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hann window
+- Lower passband edge: 5.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 4.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+Number of ECG events detected : 704 (average pulse 66 / min.)
+Computing projector
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hamming window
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 0.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+Not setting metadata
+704 matching events found
+No baseline correction applied
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+Using data from preloaded Raw for 704 events and 151 original time points ...
+0 bad epochs dropped
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg--0.200-0.400-PCA-01 (exp var=68.8%)
+Adding projection: eeg--0.200-0.400-PCA-02 (exp var=16.2%)
+Done.
+4 projection items deactivated
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-13/ses-01/eeg/sub-13_ses-01_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-13/ses-01/eeg/sub-13_ses-01_task-rest_run-01_eeg.fif
+[done]
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-13/ses-01/eeg/sub-13_ses-01_task-rest_run-01_eeg.json
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-13/ses-01/eeg/sub-13_ses-01_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-13/ses-01/eeg/sub-13_ses-01_task-rest_run-01_eeg.fif
+[done]
+/home/slouviot/miniconda3/envs/mne/lib/python3.12/site-packages/bids/layout/models.py:222: UserWarning: Accessing entities as attributes is deprecated as of 0.7. Please use the .entities dictionary instead (i.e., .entities['task'] instead of .task.
+  warnings.warn("Accessing entities as attributes is deprecated as "
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-13/ses-01/eeg/sub-13_ses-01_task-rest_run-01_eeg.json
+Filtering raw data in 1 contiguous segment
+Setting up high-pass filter at 1 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal highpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    1.0s
+Used Annotations descriptions: ['R128']
+Creating RawArray with float64 data, n_channels=64, n_times=3596900
+    Range : 0 ... 3596899 =      0.000 ...   719.380 secs
+Ready.
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 50 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal bandpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Upper passband edge: 50.00 Hz
+- Upper transition bandwidth: 12.50 Hz (-6 dB cutoff frequency: 56.25 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    1.0s
+Not setting metadata
+719 matching events found
+No baseline correction applied
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done  71 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 161 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 287 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    0.1s
+[Parallel(n_jobs=1)]: Done 647 tasks      | elapsed:    0.1s
+Dropped 0/719 epochs
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg-Raw-0.000-719.380-PCA-01 (exp var=52.3%)
+Adding projection: eeg-Raw-0.000-719.380-PCA-02 (exp var=22.3%)
+2 projection items deactivated
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+SSP projectors applied...
+Including 2 SSP projectors from raw file
+Running ECG SSP computation
+Using channel ECG to identify heart beats.
+Setting up band-pass filter from 5 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hann window
+- Lower passband edge: 5.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 4.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+Number of ECG events detected : 789 (average pulse 65 / min.)
+Computing projector
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hamming window
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 0.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+Not setting metadata
+789 matching events found
+No baseline correction applied
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+Using data from preloaded Raw for 789 events and 151 original time points ...
+0 bad epochs dropped
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg--0.200-0.400-PCA-01 (exp var=84.3%)
+Adding projection: eeg--0.200-0.400-PCA-02 (exp var=6.8%)
+Done.
+4 projection items deactivated
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-13/ses-02/eeg/sub-13_ses-02_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-13/ses-02/eeg/sub-13_ses-02_task-rest_run-01_eeg.fif
+[done]
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-13/ses-02/eeg/sub-13_ses-02_task-rest_run-01_eeg.json
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-13/ses-02/eeg/sub-13_ses-02_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-13/ses-02/eeg/sub-13_ses-02_task-rest_run-01_eeg.fif
+[done]
+/home/slouviot/miniconda3/envs/mne/lib/python3.12/site-packages/bids/layout/models.py:222: UserWarning: Accessing entities as attributes is deprecated as of 0.7. Please use the .entities dictionary instead (i.e., .entities['task'] instead of .task.
+  warnings.warn("Accessing entities as attributes is deprecated as "
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-13/ses-02/eeg/sub-13_ses-02_task-rest_run-01_eeg.json
+Filtering raw data in 1 contiguous segment
+Setting up high-pass filter at 1 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal highpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.9s
+Used Annotations descriptions: ['R128']
+Creating RawArray with float64 data, n_channels=64, n_times=3135400
+    Range : 0 ... 3135399 =      0.000 ...   627.080 secs
+Ready.
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 50 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal bandpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Upper passband edge: 50.00 Hz
+- Upper transition bandwidth: 12.50 Hz (-6 dB cutoff frequency: 56.25 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.9s
+Not setting metadata
+627 matching events found
+No baseline correction applied
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done  71 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 161 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 287 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    0.1s
+Dropped 0/627 epochs
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg-Raw-0.000-627.080-PCA-01 (exp var=70.8%)
+Adding projection: eeg-Raw-0.000-627.080-PCA-02 (exp var=16.9%)
+2 projection items deactivated
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+SSP projectors applied...
+Including 2 SSP projectors from raw file
+Running ECG SSP computation
+Using channel ECG to identify heart beats.
+Setting up band-pass filter from 5 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hann window
+- Lower passband edge: 5.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 4.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+Number of ECG events detected : 739 (average pulse 70 / min.)
+Computing projector
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hamming window
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 0.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+Not setting metadata
+739 matching events found
+No baseline correction applied
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+Using data from preloaded Raw for 739 events and 151 original time points ...
+1 bad epochs dropped
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg--0.200-0.400-PCA-01 (exp var=70.8%)
+Adding projection: eeg--0.200-0.400-PCA-02 (exp var=15.7%)
+Done.
+4 projection items deactivated
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-14/ses-01/eeg/sub-14_ses-01_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-14/ses-01/eeg/sub-14_ses-01_task-rest_run-01_eeg.fif
+[done]
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-14/ses-01/eeg/sub-14_ses-01_task-rest_run-01_eeg.json
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-14/ses-01/eeg/sub-14_ses-01_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-14/ses-01/eeg/sub-14_ses-01_task-rest_run-01_eeg.fif
+[done]
+/home/slouviot/miniconda3/envs/mne/lib/python3.12/site-packages/bids/layout/models.py:222: UserWarning: Accessing entities as attributes is deprecated as of 0.7. Please use the .entities dictionary instead (i.e., .entities['task'] instead of .task.
+  warnings.warn("Accessing entities as attributes is deprecated as "
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-14/ses-01/eeg/sub-14_ses-01_task-rest_run-01_eeg.json
+Filtering raw data in 1 contiguous segment
+Setting up high-pass filter at 1 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal highpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.9s
+Used Annotations descriptions: ['R128']
+Creating RawArray with float64 data, n_channels=64, n_times=3111900
+    Range : 0 ... 3111899 =      0.000 ...   622.380 secs
+Ready.
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 50 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal bandpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Upper passband edge: 50.00 Hz
+- Upper transition bandwidth: 12.50 Hz (-6 dB cutoff frequency: 56.25 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    1.0s
+Not setting metadata
+622 matching events found
+No baseline correction applied
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done  71 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 161 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 287 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    0.1s
+Dropped 0/622 epochs
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg-Raw-0.000-622.380-PCA-01 (exp var=62.1%)
+Adding projection: eeg-Raw-0.000-622.380-PCA-02 (exp var=15.3%)
+2 projection items deactivated
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+SSP projectors applied...
+Including 2 SSP projectors from raw file
+Running ECG SSP computation
+Using channel ECG to identify heart beats.
+Setting up band-pass filter from 5 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hann window
+- Lower passband edge: 5.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 4.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+Number of ECG events detected : 802 (average pulse 77 / min.)
+Computing projector
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hamming window
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 0.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+Not setting metadata
+802 matching events found
+No baseline correction applied
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+Using data from preloaded Raw for 802 events and 151 original time points ...
+0 bad epochs dropped
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg--0.200-0.400-PCA-01 (exp var=79.7%)
+Adding projection: eeg--0.200-0.400-PCA-02 (exp var=14.0%)
+Done.
+4 projection items deactivated
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-14/ses-02/eeg/sub-14_ses-02_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-14/ses-02/eeg/sub-14_ses-02_task-rest_run-01_eeg.fif
+[done]
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-14/ses-02/eeg/sub-14_ses-02_task-rest_run-01_eeg.json
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-14/ses-02/eeg/sub-14_ses-02_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-14/ses-02/eeg/sub-14_ses-02_task-rest_run-01_eeg.fif
+[done]
+/home/slouviot/miniconda3/envs/mne/lib/python3.12/site-packages/bids/layout/models.py:222: UserWarning: Accessing entities as attributes is deprecated as of 0.7. Please use the .entities dictionary instead (i.e., .entities['task'] instead of .task.
+  warnings.warn("Accessing entities as attributes is deprecated as "
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-14/ses-02/eeg/sub-14_ses-02_task-rest_run-01_eeg.json
+Filtering raw data in 1 contiguous segment
+Setting up high-pass filter at 1 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal highpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.9s
+Used Annotations descriptions: ['R128']
+Creating RawArray with float64 data, n_channels=64, n_times=3279800
+    Range : 0 ... 3279799 =      0.000 ...   655.960 secs
+Ready.
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 50 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal bandpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Upper passband edge: 50.00 Hz
+- Upper transition bandwidth: 12.50 Hz (-6 dB cutoff frequency: 56.25 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    1.0s
+Not setting metadata
+655 matching events found
+No baseline correction applied
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done  71 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 161 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 287 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    0.1s
+[Parallel(n_jobs=1)]: Done 647 tasks      | elapsed:    0.1s
+Dropped 0/655 epochs
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg-Raw-0.000-655.960-PCA-01 (exp var=46.7%)
+Adding projection: eeg-Raw-0.000-655.960-PCA-02 (exp var=26.2%)
+2 projection items deactivated
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+SSP projectors applied...
+Including 2 SSP projectors from raw file
+Running ECG SSP computation
+Using channel ECG to identify heart beats.
+Setting up band-pass filter from 5 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hann window
+- Lower passband edge: 5.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 4.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+Number of ECG events detected : 802 (average pulse 73 / min.)
+Computing projector
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hamming window
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 0.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+Not setting metadata
+802 matching events found
+No baseline correction applied
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+Using data from preloaded Raw for 802 events and 151 original time points ...
+0 bad epochs dropped
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg--0.200-0.400-PCA-01 (exp var=79.6%)
+Adding projection: eeg--0.200-0.400-PCA-02 (exp var=9.9%)
+Done.
+4 projection items deactivated
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-15/ses-01/eeg/sub-15_ses-01_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-15/ses-01/eeg/sub-15_ses-01_task-rest_run-01_eeg.fif
+[done]
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-15/ses-01/eeg/sub-15_ses-01_task-rest_run-01_eeg.json
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-15/ses-01/eeg/sub-15_ses-01_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-15/ses-01/eeg/sub-15_ses-01_task-rest_run-01_eeg.fif
+[done]
+/home/slouviot/miniconda3/envs/mne/lib/python3.12/site-packages/bids/layout/models.py:222: UserWarning: Accessing entities as attributes is deprecated as of 0.7. Please use the .entities dictionary instead (i.e., .entities['task'] instead of .task.
+  warnings.warn("Accessing entities as attributes is deprecated as "
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-15/ses-01/eeg/sub-15_ses-01_task-rest_run-01_eeg.json
+Filtering raw data in 1 contiguous segment
+Setting up high-pass filter at 1 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal highpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.9s
+Used Annotations descriptions: ['R128']
+Creating RawArray with float64 data, n_channels=64, n_times=3157300
+    Range : 0 ... 3157299 =      0.000 ...   631.460 secs
+Ready.
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 50 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal bandpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Upper passband edge: 50.00 Hz
+- Upper transition bandwidth: 12.50 Hz (-6 dB cutoff frequency: 56.25 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    1.1s
+Not setting metadata
+631 matching events found
+No baseline correction applied
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done  71 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 161 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 287 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    0.1s
+Dropped 0/631 epochs
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg-Raw-0.000-631.460-PCA-01 (exp var=45.4%)
+Adding projection: eeg-Raw-0.000-631.460-PCA-02 (exp var=23.4%)
+2 projection items deactivated
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+SSP projectors applied...
+Including 2 SSP projectors from raw file
+Running ECG SSP computation
+Using channel ECG to identify heart beats.
+Setting up band-pass filter from 5 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hann window
+- Lower passband edge: 5.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 4.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+Number of ECG events detected : 735 (average pulse 69 / min.)
+Computing projector
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hamming window
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 0.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.1s
+Not setting metadata
+735 matching events found
+No baseline correction applied
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+Using data from preloaded Raw for 735 events and 151 original time points ...
+1 bad epochs dropped
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg--0.200-0.400-PCA-01 (exp var=77.7%)
+Adding projection: eeg--0.200-0.400-PCA-02 (exp var=10.8%)
+Done.
+4 projection items deactivated
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-15/ses-02/eeg/sub-15_ses-02_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-15/ses-02/eeg/sub-15_ses-02_task-rest_run-01_eeg.fif
+[done]
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-15/ses-02/eeg/sub-15_ses-02_task-rest_run-01_eeg.json
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-15/ses-02/eeg/sub-15_ses-02_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-15/ses-02/eeg/sub-15_ses-02_task-rest_run-01_eeg.fif
+[done]
+/home/slouviot/miniconda3/envs/mne/lib/python3.12/site-packages/bids/layout/models.py:222: UserWarning: Accessing entities as attributes is deprecated as of 0.7. Please use the .entities dictionary instead (i.e., .entities['task'] instead of .task.
+  warnings.warn("Accessing entities as attributes is deprecated as "
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-15/ses-02/eeg/sub-15_ses-02_task-rest_run-01_eeg.json
+Filtering raw data in 1 contiguous segment
+Setting up high-pass filter at 1 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal highpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.8s
+Used Annotations descriptions: ['R128']
+Creating RawArray with float64 data, n_channels=64, n_times=3103400
+    Range : 0 ... 3103399 =      0.000 ...   620.680 secs
+Ready.
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 50 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal bandpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Upper passband edge: 50.00 Hz
+- Upper transition bandwidth: 12.50 Hz (-6 dB cutoff frequency: 56.25 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    1.0s
+Not setting metadata
+620 matching events found
+No baseline correction applied
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done  71 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 161 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 287 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    0.1s
+Dropped 0/620 epochs
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg-Raw-0.000-620.680-PCA-01 (exp var=77.8%)
+Adding projection: eeg-Raw-0.000-620.680-PCA-02 (exp var=7.7%)
+2 projection items deactivated
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+SSP projectors applied...
+Including 2 SSP projectors from raw file
+Running ECG SSP computation
+Using channel ECG to identify heart beats.
+Setting up band-pass filter from 5 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hann window
+- Lower passband edge: 5.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 4.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+Number of ECG events detected : 744 (average pulse 71 / min.)
+Computing projector
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hamming window
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 0.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+Not setting metadata
+744 matching events found
+No baseline correction applied
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+Using data from preloaded Raw for 744 events and 151 original time points ...
+0 bad epochs dropped
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg--0.200-0.400-PCA-01 (exp var=69.7%)
+Adding projection: eeg--0.200-0.400-PCA-02 (exp var=19.1%)
+Done.
+4 projection items deactivated
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-16/ses-01/eeg/sub-16_ses-01_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-16/ses-01/eeg/sub-16_ses-01_task-rest_run-01_eeg.fif
+[done]
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-16/ses-01/eeg/sub-16_ses-01_task-rest_run-01_eeg.json
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-16/ses-01/eeg/sub-16_ses-01_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-16/ses-01/eeg/sub-16_ses-01_task-rest_run-01_eeg.fif
+[done]
+/home/slouviot/miniconda3/envs/mne/lib/python3.12/site-packages/bids/layout/models.py:222: UserWarning: Accessing entities as attributes is deprecated as of 0.7. Please use the .entities dictionary instead (i.e., .entities['task'] instead of .task.
+  warnings.warn("Accessing entities as attributes is deprecated as "
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-16/ses-01/eeg/sub-16_ses-01_task-rest_run-01_eeg.json
+Filtering raw data in 1 contiguous segment
+Setting up high-pass filter at 1 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal highpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.9s
+Used Annotations descriptions: ['R128']
+filename: sub-16_ses-02_task-rest_run-01_eeg.set
+                error:TR spacings are not consistent; the following unique distances were present: [    0 10500].
+
+                
+Filtering raw data in 1 contiguous segment
+Setting up high-pass filter at 1 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal highpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.9s
+Used Annotations descriptions: ['R128']
+Creating RawArray with float64 data, n_channels=64, n_times=3192000
+    Range : 0 ... 3191999 =      0.000 ...   638.400 secs
+Ready.
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 50 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal bandpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Upper passband edge: 50.00 Hz
+- Upper transition bandwidth: 12.50 Hz (-6 dB cutoff frequency: 56.25 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.9s
+Not setting metadata
+638 matching events found
+No baseline correction applied
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done  71 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 161 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 287 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    0.1s
+Dropped 0/638 epochs
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg-Raw-0.000-638.400-PCA-01 (exp var=50.1%)
+Adding projection: eeg-Raw-0.000-638.400-PCA-02 (exp var=24.1%)
+2 projection items deactivated
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+SSP projectors applied...
+Including 2 SSP projectors from raw file
+Running ECG SSP computation
+Using channel ECG to identify heart beats.
+Setting up band-pass filter from 5 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hann window
+- Lower passband edge: 5.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 4.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+Number of ECG events detected : 680 (average pulse 63 / min.)
+Computing projector
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hamming window
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 0.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+Not setting metadata
+680 matching events found
+No baseline correction applied
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+Using data from preloaded Raw for 680 events and 151 original time points ...
+1 bad epochs dropped
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg--0.200-0.400-PCA-01 (exp var=90.1%)
+Adding projection: eeg--0.200-0.400-PCA-02 (exp var=6.4%)
+Done.
+4 projection items deactivated
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-17/ses-01/eeg/sub-17_ses-01_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-17/ses-01/eeg/sub-17_ses-01_task-rest_run-01_eeg.fif
+[done]
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-17/ses-01/eeg/sub-17_ses-01_task-rest_run-01_eeg.json
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-17/ses-01/eeg/sub-17_ses-01_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-17/ses-01/eeg/sub-17_ses-01_task-rest_run-01_eeg.fif
+[done]
+/home/slouviot/miniconda3/envs/mne/lib/python3.12/site-packages/bids/layout/models.py:222: UserWarning: Accessing entities as attributes is deprecated as of 0.7. Please use the .entities dictionary instead (i.e., .entities['task'] instead of .task.
+  warnings.warn("Accessing entities as attributes is deprecated as "
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-17/ses-01/eeg/sub-17_ses-01_task-rest_run-01_eeg.json
+Filtering raw data in 1 contiguous segment
+Setting up high-pass filter at 1 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal highpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    1.0s
+Used Annotations descriptions: ['R128']
+Creating RawArray with float64 data, n_channels=64, n_times=3459500
+    Range : 0 ... 3459499 =      0.000 ...   691.900 secs
+Ready.
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 50 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal bandpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Upper passband edge: 50.00 Hz
+- Upper transition bandwidth: 12.50 Hz (-6 dB cutoff frequency: 56.25 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    1.0s
+Not setting metadata
+691 matching events found
+No baseline correction applied
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done  71 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 161 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 287 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    0.1s
+[Parallel(n_jobs=1)]: Done 647 tasks      | elapsed:    0.1s
+Dropped 0/691 epochs
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg-Raw-0.000-691.900-PCA-01 (exp var=52.4%)
+Adding projection: eeg-Raw-0.000-691.900-PCA-02 (exp var=25.8%)
+2 projection items deactivated
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+SSP projectors applied...
+Including 2 SSP projectors from raw file
+Running ECG SSP computation
+Using channel ECG to identify heart beats.
+Setting up band-pass filter from 5 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hann window
+- Lower passband edge: 5.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 4.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+Number of ECG events detected : 714 (average pulse 61 / min.)
+Computing projector
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hamming window
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 0.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.1s
+Not setting metadata
+714 matching events found
+No baseline correction applied
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+Using data from preloaded Raw for 714 events and 151 original time points ...
+0 bad epochs dropped
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg--0.200-0.400-PCA-01 (exp var=57.8%)
+Adding projection: eeg--0.200-0.400-PCA-02 (exp var=24.3%)
+Done.
+4 projection items deactivated
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-17/ses-02/eeg/sub-17_ses-02_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-17/ses-02/eeg/sub-17_ses-02_task-rest_run-01_eeg.fif
+[done]
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-17/ses-02/eeg/sub-17_ses-02_task-rest_run-01_eeg.json
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-17/ses-02/eeg/sub-17_ses-02_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-17/ses-02/eeg/sub-17_ses-02_task-rest_run-01_eeg.fif
+[done]
+/home/slouviot/miniconda3/envs/mne/lib/python3.12/site-packages/bids/layout/models.py:222: UserWarning: Accessing entities as attributes is deprecated as of 0.7. Please use the .entities dictionary instead (i.e., .entities['task'] instead of .task.
+  warnings.warn("Accessing entities as attributes is deprecated as "
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-17/ses-02/eeg/sub-17_ses-02_task-rest_run-01_eeg.json
+Filtering raw data in 1 contiguous segment
+Setting up high-pass filter at 1 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal highpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    1.0s
+Used Annotations descriptions: ['R128']
+Creating RawArray with float64 data, n_channels=64, n_times=3351700
+    Range : 0 ... 3351699 =      0.000 ...   670.340 secs
+Ready.
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 50 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal bandpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Upper passband edge: 50.00 Hz
+- Upper transition bandwidth: 12.50 Hz (-6 dB cutoff frequency: 56.25 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    1.0s
+Not setting metadata
+670 matching events found
+No baseline correction applied
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done  71 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 161 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 287 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    0.1s
+[Parallel(n_jobs=1)]: Done 647 tasks      | elapsed:    0.1s
+Dropped 0/670 epochs
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg-Raw-0.000-670.340-PCA-01 (exp var=58.1%)
+Adding projection: eeg-Raw-0.000-670.340-PCA-02 (exp var=27.9%)
+2 projection items deactivated
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+SSP projectors applied...
+Including 2 SSP projectors from raw file
+Running ECG SSP computation
+Using channel ECG to identify heart beats.
+Setting up band-pass filter from 5 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hann window
+- Lower passband edge: 5.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 4.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+Number of ECG events detected : 869 (average pulse 77 / min.)
+Computing projector
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hamming window
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 0.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.1s
+Not setting metadata
+869 matching events found
+No baseline correction applied
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+Using data from preloaded Raw for 869 events and 151 original time points ...
+1 bad epochs dropped
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg--0.200-0.400-PCA-01 (exp var=71.6%)
+Adding projection: eeg--0.200-0.400-PCA-02 (exp var=18.9%)
+Done.
+4 projection items deactivated
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-17/ses-03/eeg/sub-17_ses-03_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-17/ses-03/eeg/sub-17_ses-03_task-rest_run-01_eeg.fif
+[done]
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-17/ses-03/eeg/sub-17_ses-03_task-rest_run-01_eeg.json
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-17/ses-03/eeg/sub-17_ses-03_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-17/ses-03/eeg/sub-17_ses-03_task-rest_run-01_eeg.fif
+[done]
+/home/slouviot/miniconda3/envs/mne/lib/python3.12/site-packages/bids/layout/models.py:222: UserWarning: Accessing entities as attributes is deprecated as of 0.7. Please use the .entities dictionary instead (i.e., .entities['task'] instead of .task.
+  warnings.warn("Accessing entities as attributes is deprecated as "
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-17/ses-03/eeg/sub-17_ses-03_task-rest_run-01_eeg.json
+Filtering raw data in 1 contiguous segment
+Setting up high-pass filter at 1 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal highpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.9s
+Used Annotations descriptions: ['R128']
+Creating RawArray with float64 data, n_channels=64, n_times=3181100
+    Range : 0 ... 3181099 =      0.000 ...   636.220 secs
+Ready.
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 50 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal bandpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Upper passband edge: 50.00 Hz
+- Upper transition bandwidth: 12.50 Hz (-6 dB cutoff frequency: 56.25 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.9s
+Not setting metadata
+636 matching events found
+No baseline correction applied
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done  71 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 161 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 287 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    0.1s
+Dropped 0/636 epochs
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg-Raw-0.000-636.220-PCA-01 (exp var=67.4%)
+Adding projection: eeg-Raw-0.000-636.220-PCA-02 (exp var=15.7%)
+2 projection items deactivated
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+SSP projectors applied...
+Including 2 SSP projectors from raw file
+Running ECG SSP computation
+Using channel ECG to identify heart beats.
+Setting up band-pass filter from 5 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hann window
+- Lower passband edge: 5.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 4.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+Number of ECG events detected : 675 (average pulse 63 / min.)
+Computing projector
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hamming window
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 0.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+Not setting metadata
+675 matching events found
+No baseline correction applied
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+Using data from preloaded Raw for 675 events and 151 original time points ...
+1 bad epochs dropped
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg--0.200-0.400-PCA-01 (exp var=86.4%)
+Adding projection: eeg--0.200-0.400-PCA-02 (exp var=9.1%)
+Done.
+4 projection items deactivated
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-18/ses-01/eeg/sub-18_ses-01_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-18/ses-01/eeg/sub-18_ses-01_task-rest_run-01_eeg.fif
+[done]
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-18/ses-01/eeg/sub-18_ses-01_task-rest_run-01_eeg.json
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-18/ses-01/eeg/sub-18_ses-01_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-18/ses-01/eeg/sub-18_ses-01_task-rest_run-01_eeg.fif
+[done]
+/home/slouviot/miniconda3/envs/mne/lib/python3.12/site-packages/bids/layout/models.py:222: UserWarning: Accessing entities as attributes is deprecated as of 0.7. Please use the .entities dictionary instead (i.e., .entities['task'] instead of .task.
+  warnings.warn("Accessing entities as attributes is deprecated as "
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-18/ses-01/eeg/sub-18_ses-01_task-rest_run-01_eeg.json
+Filtering raw data in 1 contiguous segment
+Setting up high-pass filter at 1 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal highpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    1.0s
+Used Annotations descriptions: ['R128']
+Creating RawArray with float64 data, n_channels=64, n_times=3380900
+    Range : 0 ... 3380899 =      0.000 ...   676.180 secs
+Ready.
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 50 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal bandpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Upper passband edge: 50.00 Hz
+- Upper transition bandwidth: 12.50 Hz (-6 dB cutoff frequency: 56.25 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    1.0s
+Not setting metadata
+676 matching events found
+No baseline correction applied
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done  71 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 161 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 287 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    0.1s
+[Parallel(n_jobs=1)]: Done 647 tasks      | elapsed:    0.1s
+Dropped 0/676 epochs
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg-Raw-0.000-676.180-PCA-01 (exp var=40.1%)
+Adding projection: eeg-Raw-0.000-676.180-PCA-02 (exp var=26.3%)
+2 projection items deactivated
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+SSP projectors applied...
+Including 2 SSP projectors from raw file
+Running ECG SSP computation
+Using channel ECG to identify heart beats.
+Setting up band-pass filter from 5 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hann window
+- Lower passband edge: 5.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 4.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+Number of ECG events detected : 1042 (average pulse 92 / min.)
+Computing projector
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hamming window
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 0.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.1s
+Not setting metadata
+1042 matching events found
+No baseline correction applied
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+Using data from preloaded Raw for 1042 events and 151 original time points ...
+0 bad epochs dropped
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg--0.200-0.400-PCA-01 (exp var=61.5%)
+Adding projection: eeg--0.200-0.400-PCA-02 (exp var=12.9%)
+Done.
+4 projection items deactivated
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-19/ses-01/eeg/sub-19_ses-01_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-19/ses-01/eeg/sub-19_ses-01_task-rest_run-01_eeg.fif
+[done]
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-19/ses-01/eeg/sub-19_ses-01_task-rest_run-01_eeg.json
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-19/ses-01/eeg/sub-19_ses-01_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-19/ses-01/eeg/sub-19_ses-01_task-rest_run-01_eeg.fif
+[done]
+/home/slouviot/miniconda3/envs/mne/lib/python3.12/site-packages/bids/layout/models.py:222: UserWarning: Accessing entities as attributes is deprecated as of 0.7. Please use the .entities dictionary instead (i.e., .entities['task'] instead of .task.
+  warnings.warn("Accessing entities as attributes is deprecated as "
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-19/ses-01/eeg/sub-19_ses-01_task-rest_run-01_eeg.json
+Filtering raw data in 1 contiguous segment
+Setting up high-pass filter at 1 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal highpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.9s
+Used Annotations descriptions: ['R128']
+filename: sub-19_ses-02_task-rest_run-01_eeg.set
+                error:TR spacings are not consistent; the following unique distances were present: [10499 10500 10501].
+
+                
+Filtering raw data in 1 contiguous segment
+Setting up high-pass filter at 1 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal highpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.9s
+Used Annotations descriptions: ['R128']
+Creating RawArray with float64 data, n_channels=64, n_times=3343500
+    Range : 0 ... 3343499 =      0.000 ...   668.700 secs
+Ready.
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 50 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal bandpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Upper passband edge: 50.00 Hz
+- Upper transition bandwidth: 12.50 Hz (-6 dB cutoff frequency: 56.25 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    1.0s
+Not setting metadata
+668 matching events found
+No baseline correction applied
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done  71 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 161 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 287 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    0.1s
+[Parallel(n_jobs=1)]: Done 647 tasks      | elapsed:    0.1s
+Dropped 0/668 epochs
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg-Raw-0.000-668.700-PCA-01 (exp var=76.2%)
+Adding projection: eeg-Raw-0.000-668.700-PCA-02 (exp var=12.2%)
+2 projection items deactivated
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+SSP projectors applied...
+Including 2 SSP projectors from raw file
+Running ECG SSP computation
+Using channel ECG to identify heart beats.
+Setting up band-pass filter from 5 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hann window
+- Lower passband edge: 5.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 4.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+Number of ECG events detected : 666 (average pulse 59 / min.)
+Computing projector
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hamming window
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 0.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.1s
+Not setting metadata
+666 matching events found
+No baseline correction applied
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+Using data from preloaded Raw for 666 events and 151 original time points ...
+1 bad epochs dropped
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg--0.200-0.400-PCA-01 (exp var=47.4%)
+Adding projection: eeg--0.200-0.400-PCA-02 (exp var=35.4%)
+Done.
+4 projection items deactivated
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-20/ses-01/eeg/sub-20_ses-01_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-20/ses-01/eeg/sub-20_ses-01_task-rest_run-01_eeg.fif
+[done]
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-20/ses-01/eeg/sub-20_ses-01_task-rest_run-01_eeg.json
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-20/ses-01/eeg/sub-20_ses-01_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-20/ses-01/eeg/sub-20_ses-01_task-rest_run-01_eeg.fif
+[done]
+/home/slouviot/miniconda3/envs/mne/lib/python3.12/site-packages/bids/layout/models.py:222: UserWarning: Accessing entities as attributes is deprecated as of 0.7. Please use the .entities dictionary instead (i.e., .entities['task'] instead of .task.
+  warnings.warn("Accessing entities as attributes is deprecated as "
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-20/ses-01/eeg/sub-20_ses-01_task-rest_run-01_eeg.json
+Filtering raw data in 1 contiguous segment
+Setting up high-pass filter at 1 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal highpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.9s
+Used Annotations descriptions: ['R128']
+Creating RawArray with float64 data, n_channels=64, n_times=3280700
+    Range : 0 ... 3280699 =      0.000 ...   656.140 secs
+Ready.
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 50 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal bandpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Upper passband edge: 50.00 Hz
+- Upper transition bandwidth: 12.50 Hz (-6 dB cutoff frequency: 56.25 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    1.0s
+Not setting metadata
+656 matching events found
+No baseline correction applied
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done  71 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 161 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 287 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    0.1s
+[Parallel(n_jobs=1)]: Done 647 tasks      | elapsed:    0.1s
+Dropped 0/656 epochs
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg-Raw-0.000-656.140-PCA-01 (exp var=81.6%)
+Adding projection: eeg-Raw-0.000-656.140-PCA-02 (exp var=8.6%)
+2 projection items deactivated
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+SSP projectors applied...
+Including 2 SSP projectors from raw file
+Running ECG SSP computation
+Using channel ECG to identify heart beats.
+Setting up band-pass filter from 5 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hann window
+- Lower passband edge: 5.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 4.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+Number of ECG events detected : 631 (average pulse 57 / min.)
+Computing projector
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hamming window
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 0.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+Not setting metadata
+631 matching events found
+No baseline correction applied
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+Using data from preloaded Raw for 631 events and 151 original time points ...
+0 bad epochs dropped
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg--0.200-0.400-PCA-01 (exp var=51.2%)
+Adding projection: eeg--0.200-0.400-PCA-02 (exp var=36.9%)
+Done.
+4 projection items deactivated
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-20/ses-02/eeg/sub-20_ses-02_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-20/ses-02/eeg/sub-20_ses-02_task-rest_run-01_eeg.fif
+[done]
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-20/ses-02/eeg/sub-20_ses-02_task-rest_run-01_eeg.json
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-20/ses-02/eeg/sub-20_ses-02_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-20/ses-02/eeg/sub-20_ses-02_task-rest_run-01_eeg.fif
+[done]
+/home/slouviot/miniconda3/envs/mne/lib/python3.12/site-packages/bids/layout/models.py:222: UserWarning: Accessing entities as attributes is deprecated as of 0.7. Please use the .entities dictionary instead (i.e., .entities['task'] instead of .task.
+  warnings.warn("Accessing entities as attributes is deprecated as "
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-20/ses-02/eeg/sub-20_ses-02_task-rest_run-01_eeg.json
+Filtering raw data in 1 contiguous segment
+Setting up high-pass filter at 1 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal highpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.9s
+Used Annotations descriptions: ['R128']
+Creating RawArray with float64 data, n_channels=64, n_times=3113800
+    Range : 0 ... 3113799 =      0.000 ...   622.760 secs
+Ready.
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 50 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal bandpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Upper passband edge: 50.00 Hz
+- Upper transition bandwidth: 12.50 Hz (-6 dB cutoff frequency: 56.25 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.9s
+Not setting metadata
+622 matching events found
+No baseline correction applied
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done  71 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 161 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 287 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    0.1s
+Dropped 0/622 epochs
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg-Raw-0.000-622.760-PCA-01 (exp var=64.8%)
+Adding projection: eeg-Raw-0.000-622.760-PCA-02 (exp var=16.3%)
+2 projection items deactivated
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+SSP projectors applied...
+Including 2 SSP projectors from raw file
+Running ECG SSP computation
+Using channel ECG to identify heart beats.
+Setting up band-pass filter from 5 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hann window
+- Lower passband edge: 5.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 4.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+Number of ECG events detected : 694 (average pulse 66 / min.)
+Computing projector
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hamming window
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 0.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+Not setting metadata
+694 matching events found
+No baseline correction applied
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+Using data from preloaded Raw for 694 events and 151 original time points ...
+1 bad epochs dropped
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg--0.200-0.400-PCA-01 (exp var=69.5%)
+Adding projection: eeg--0.200-0.400-PCA-02 (exp var=17.4%)
+Done.
+4 projection items deactivated
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-21/ses-01/eeg/sub-21_ses-01_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-21/ses-01/eeg/sub-21_ses-01_task-rest_run-01_eeg.fif
+[done]
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-21/ses-01/eeg/sub-21_ses-01_task-rest_run-01_eeg.json
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-21/ses-01/eeg/sub-21_ses-01_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-21/ses-01/eeg/sub-21_ses-01_task-rest_run-01_eeg.fif
+[done]
+/home/slouviot/miniconda3/envs/mne/lib/python3.12/site-packages/bids/layout/models.py:222: UserWarning: Accessing entities as attributes is deprecated as of 0.7. Please use the .entities dictionary instead (i.e., .entities['task'] instead of .task.
+  warnings.warn("Accessing entities as attributes is deprecated as "
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-21/ses-01/eeg/sub-21_ses-01_task-rest_run-01_eeg.json
+Filtering raw data in 1 contiguous segment
+Setting up high-pass filter at 1 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal highpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.9s
+Used Annotations descriptions: ['R128']
+Creating RawArray with float64 data, n_channels=64, n_times=3197000
+    Range : 0 ... 3196999 =      0.000 ...   639.400 secs
+Ready.
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 50 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal bandpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Upper passband edge: 50.00 Hz
+- Upper transition bandwidth: 12.50 Hz (-6 dB cutoff frequency: 56.25 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.9s
+Not setting metadata
+639 matching events found
+No baseline correction applied
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done  71 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 161 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 287 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    0.1s
+Dropped 0/639 epochs
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg-Raw-0.000-639.400-PCA-01 (exp var=67.1%)
+Adding projection: eeg-Raw-0.000-639.400-PCA-02 (exp var=18.0%)
+2 projection items deactivated
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+SSP projectors applied...
+Including 2 SSP projectors from raw file
+Running ECG SSP computation
+Using channel ECG to identify heart beats.
+Setting up band-pass filter from 5 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hann window
+- Lower passband edge: 5.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 4.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+Number of ECG events detected : 652 (average pulse 61 / min.)
+Computing projector
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hamming window
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 0.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+Not setting metadata
+652 matching events found
+No baseline correction applied
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+Using data from preloaded Raw for 652 events and 151 original time points ...
+0 bad epochs dropped
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg--0.200-0.400-PCA-01 (exp var=82.9%)
+Adding projection: eeg--0.200-0.400-PCA-02 (exp var=8.4%)
+Done.
+4 projection items deactivated
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-21/ses-02/eeg/sub-21_ses-02_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-21/ses-02/eeg/sub-21_ses-02_task-rest_run-01_eeg.fif
+[done]
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-21/ses-02/eeg/sub-21_ses-02_task-rest_run-01_eeg.json
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-21/ses-02/eeg/sub-21_ses-02_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-21/ses-02/eeg/sub-21_ses-02_task-rest_run-01_eeg.fif
+[done]
+/home/slouviot/miniconda3/envs/mne/lib/python3.12/site-packages/bids/layout/models.py:222: UserWarning: Accessing entities as attributes is deprecated as of 0.7. Please use the .entities dictionary instead (i.e., .entities['task'] instead of .task.
+  warnings.warn("Accessing entities as attributes is deprecated as "
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-21/ses-02/eeg/sub-21_ses-02_task-rest_run-01_eeg.json
+Filtering raw data in 1 contiguous segment
+Setting up high-pass filter at 1 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal highpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.9s
+Used Annotations descriptions: ['R128']
+Creating RawArray with float64 data, n_channels=64, n_times=3196100
+    Range : 0 ... 3196099 =      0.000 ...   639.220 secs
+Ready.
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 50 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal bandpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Upper passband edge: 50.00 Hz
+- Upper transition bandwidth: 12.50 Hz (-6 dB cutoff frequency: 56.25 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.9s
+Not setting metadata
+639 matching events found
+No baseline correction applied
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done  71 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 161 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 287 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    0.1s
+Dropped 0/639 epochs
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg-Raw-0.000-639.220-PCA-01 (exp var=59.8%)
+Adding projection: eeg-Raw-0.000-639.220-PCA-02 (exp var=22.0%)
+2 projection items deactivated
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+SSP projectors applied...
+Including 2 SSP projectors from raw file
+Running ECG SSP computation
+Using channel ECG to identify heart beats.
+Setting up band-pass filter from 5 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hann window
+- Lower passband edge: 5.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 4.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+Number of ECG events detected : 715 (average pulse 67 / min.)
+Computing projector
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hamming window
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 0.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+Not setting metadata
+715 matching events found
+No baseline correction applied
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+Using data from preloaded Raw for 715 events and 151 original time points ...
+0 bad epochs dropped
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg--0.200-0.400-PCA-01 (exp var=86.5%)
+Adding projection: eeg--0.200-0.400-PCA-02 (exp var=8.1%)
+Done.
+4 projection items deactivated
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-22/ses-01/eeg/sub-22_ses-01_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-22/ses-01/eeg/sub-22_ses-01_task-rest_run-01_eeg.fif
+[done]
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-22/ses-01/eeg/sub-22_ses-01_task-rest_run-01_eeg.json
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-22/ses-01/eeg/sub-22_ses-01_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-22/ses-01/eeg/sub-22_ses-01_task-rest_run-01_eeg.fif
+[done]
+/home/slouviot/miniconda3/envs/mne/lib/python3.12/site-packages/bids/layout/models.py:222: UserWarning: Accessing entities as attributes is deprecated as of 0.7. Please use the .entities dictionary instead (i.e., .entities['task'] instead of .task.
+  warnings.warn("Accessing entities as attributes is deprecated as "
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-22/ses-01/eeg/sub-22_ses-01_task-rest_run-01_eeg.json
+Filtering raw data in 1 contiguous segment
+Setting up high-pass filter at 1 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal highpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.9s
+Used Annotations descriptions: ['R128']
+Creating RawArray with float64 data, n_channels=64, n_times=3298900
+    Range : 0 ... 3298899 =      0.000 ...   659.780 secs
+Ready.
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 50 Hz
+
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal bandpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 1.00 Hz (-6 dB cutoff frequency: 0.50 Hz)
+- Upper passband edge: 50.00 Hz
+- Upper transition bandwidth: 12.50 Hz (-6 dB cutoff frequency: 56.25 Hz)
+- Filter length: 16501 samples (3.300 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.9s
+Not setting metadata
+659 matching events found
+No baseline correction applied
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done  71 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 161 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 287 tasks      | elapsed:    0.0s
+[Parallel(n_jobs=1)]: Done 449 tasks      | elapsed:    0.1s
+[Parallel(n_jobs=1)]: Done 647 tasks      | elapsed:    0.1s
+Dropped 0/659 epochs
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg-Raw-0.000-659.780-PCA-01 (exp var=49.4%)
+Adding projection: eeg-Raw-0.000-659.780-PCA-02 (exp var=25.6%)
+2 projection items deactivated
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+SSP projectors applied...
+Including 2 SSP projectors from raw file
+Running ECG SSP computation
+Using channel ECG to identify heart beats.
+Setting up band-pass filter from 5 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hann window
+- Lower passband edge: 5.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 4.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+Number of ECG events detected : 714 (average pulse 64 / min.)
+Computing projector
+Filtering raw data in 1 contiguous segment
+Setting up band-pass filter from 1 - 35 Hz
+
+FIR filter parameters
+---------------------
+Designing a two-pass forward and reverse, zero-phase, non-causal bandpass filter:
+- Windowed frequency-domain design (firwin2) method
+- Hamming window
+- Lower passband edge: 1.00
+- Lower transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 0.75 Hz)
+- Upper passband edge: 35.00 Hz
+- Upper transition bandwidth: 0.50 Hz (-12 dB cutoff frequency: 35.25 Hz)
+- Filter length: 2500 samples (10.000 s)
+
+[Parallel(n_jobs=1)]: Done  17 tasks      | elapsed:    0.1s
+Not setting metadata
+714 matching events found
+No baseline correction applied
+Created an SSP operator (subspace dimension = 2)
+2 projection items activated
+Using data from preloaded Raw for 714 events and 151 original time points ...
+0 bad epochs dropped
+No channels 'grad' found. Skipping.
+No channels 'mag' found. Skipping.
+Adding projection: eeg--0.200-0.400-PCA-01 (exp var=66.6%)
+Adding projection: eeg--0.200-0.400-PCA-02 (exp var=21.1%)
+Done.
+4 projection items deactivated
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-22/ses-02/eeg/sub-22_ses-02_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG/sub-22/ses-02/eeg/sub-22_ses-02_task-rest_run-01_eeg.fif
+[done]
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-22/ses-02/eeg/sub-22_ses-02_task-rest_run-01_eeg.json
+Writing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-22/ses-02/eeg/sub-22_ses-02_task-rest_run-01_eeg.fif
+Closing /projects/EEG_FMRI/bids_eeg/BIDS/NEW/DERIVATIVES/GRAD_BCG_ASR/sub-22/ses-02/eeg/sub-22_ses-02_task-rest_run-01_eeg.fif
+[done]
+/projects/EEG_FMRI/bids_eeg/BIDS/NEW/RAW/sub-22/ses-02/eeg/sub-22_ses-02_task-rest_run-01_eeg.json
